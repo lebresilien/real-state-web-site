@@ -3,6 +3,8 @@ import { FaceIcon, InstagramLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from '
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Icon } from './ui/icons'
+
 const Footer = () => {
 	return (
 		<footer className="bg-gray-900">
@@ -15,22 +17,22 @@ const Footer = () => {
 									<Image
 										width={292.5}
 										height={78}
-										src="/images/white-logo.png"
-										alt="Zeeka Logo"
+										src="https://designbygio.it/images/logo.png"
+										alt="Real State Logo"
 										className="hidden sm:block"
 									/>
 									<Image
 										width={120}
 										height={50}
-										src="/images/white-logo.png"
-										alt="Zeeka Logo"
+										src="https://designbygio.it/images/logo.png"
+										alt="Real State Logo"
 										className="sm:hidden"
 									/>
 								</Link>
 							</div>
 							<div className="">
 								<span className="block self-center whitespace-nowrap text-sm font-semibold  text-white sm:text-xl">
-									tt
+									trust by many
 								</span>
 							</div>
 						</div>
@@ -38,54 +40,49 @@ const Footer = () => {
 					<div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
 						<div>
 							<h2 className="mb-6 text-sm font-semibold uppercase text-white">
-								ttt
+								Navigation
 							</h2>
 							<ul className="text-xs capitalize text-white">
 								<li className="mb-2">
 									<Link href="/" className="hover:underline">
-										tt
+										accueil
 									</Link>
 								</li>
 								<li className="mb-2">
 									<Link href="#" className="hover:underline">
-										tt
-									</Link>
-								</li>
-								{/* <li className="mb-2">
-								<Link href="#" className="hover:underline">
-									{footer['pricing']}
-								</Link>
-							</li> */}
-								<li className="mb-2">
-									<Link href="#" className="hover:underline">
-										tt
+										services
 									</Link>
 								</li>
 								<li className="mb-2">
 									<Link href="#" className="hover:underline">
-										tt
+										blog
+									</Link>
+								</li>
+								<li className="mb-2">
+									<Link href="#" className="hover:underline">
+										contact
 									</Link>
 								</li>
 								<li>
 									<Link href="#" className="hover:underline">
-									ttt
+										contact
 									</Link>
 								</li>
 							</ul>
 						</div>
 						<div>
 							<h2 className="mb-6 text-sm font-semibold uppercase text-white">
-								tt
+								a propos
 							</h2>
 							<ul className="text-xs capitalize text-white">
 								<li className="mb-2">
 									<Link href="#" className="hover:underline ">
-										tt
+										confidentialité
 									</Link>
 								</li>
 								<li className="mb-2">
 									<Link href="#" className="hover:underline ">
-										tt
+										cookies
 									</Link>
 								</li>
 								<li className="mb-0">
@@ -97,23 +94,23 @@ const Footer = () => {
 						</div>
 						<div>
 							<h2 className="mb-6 text-sm font-semibold uppercase text-white">
-								tt
+								careers
 							</h2>
 							<ul className="text-xs capitalize text-white">
 								<li className="mb-2">
 									<Link href="#" className="hover:underline">
-										tt
+										centre d&apos;aide
 									</Link>
 								</li>
 								<li className="mb-2">
 									<Link href="#" className="hover:underline">
-										jj
+										faq
 									</Link>
 								</li>
 
 								<li className="mb-0">
 									<Link href="#" className="hover:underline">
-										ee
+										contact
 									</Link>
 								</li>
 							</ul>
@@ -122,9 +119,9 @@ const Footer = () => {
 				</div>
 
 				<div className="flex flex-col items-center space-y-3 overflow-hidden px-4 md:flex-row md:justify-between md:space-y-0 lg:px-10">
-					<div className="md:max-w-lg">
-						<p className="break-all text-xs text-white md:text-sm">
-							desxription
+					<div className="max-w-sm md:max-w-3xl">
+						<p className="text-xs text-center text-white lg:text-sm">
+                            Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun.
 						</p>
 					</div>
 					<div className="flex flex-row space-x-2 md:space-x-3">
@@ -165,7 +162,7 @@ const Footer = () => {
 				<div className="px-4 py-6 sm:flex sm:items-center sm:justify-between lg:px-10 lg:py-8">
 					<div className="space-x-3">
 						<span className="text-sm text-white sm:text-center">
-							Copyright© 2023 Zeeka.copyrtr
+							Copyright© 2024 company
 						</span>
 						<span className="text-xs text-white sm:text-center">
 							cookies
@@ -174,21 +171,21 @@ const Footer = () => {
 							site map
 						</span>
 						<span className="text-xs text-white sm:text-center">
-							megacy
+							legacy
 						</span>
 					</div>
 					<div className="mt-4 flex sm:mt-0 sm:justify-center sm:space-x-2">
 						<Link href="#" target="_blank" className="text-white">
-                            <TwitterLogoIcon className="cursor-pointer h-10 w-10 hover:text-gray-500" />
+                            <Icon name="twitter-logo" className="" />
 						</Link>
 						<Link href="#" target="_blank" className="text-white">
-                            <FaceIcon className="cursor-pointer h-10 w-10 hover:text-gray-500" />
+                            <Icon name="linkedin-logo" className="cursor-pointer h-5 w-5 hover:text-gray-500" />
 						</Link>
 						<Link href="#" target="_blank" className="ms-5 text-white">
-                            <LinkedInLogoIcon className="cursor-pointer h-10 w-10 hover:text-gray-500" />
+                            <Icon name="linkedin-logo" className="cursor-pointer h-5 w-5 hover:text-gray-500" />
 						</Link>
 						<Link href="#" target="_blank" className="ms-5 text-white">
-                            <InstagramLogoIcon className="cursor-pointer h-10 w-10 hover:text-gray-500" />
+                            <Icon name="instagram-logo" className="cursor-pointer h-5 w-5 hover:text-gray-500" />
 						</Link>
 					</div>
 				</div>

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:icons": "tsx ./other/build-icons.mts",
     "start": "next start",
     "lint": "next lint"
   },
@@ -13,20 +14,26 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.23",
+    "fs-extra": "^11.2.0",
     "next": "14.2.5",
+    "node-html-parser": "^6.1.13",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@sly-cli/sly": "^1.14.0",
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",
+    "prettier": "^3.3.3",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.17.0",
     "typescript": "^5"
   }
 }

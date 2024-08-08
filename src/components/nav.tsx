@@ -2,8 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { Cross1Icon, EyeOpenIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { motion } from "framer-motion";
+import { Icon } from "./ui/icons";
 
 const links = [
   {
@@ -33,10 +34,11 @@ const  Nav = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between border-b border-gray-400 py-8">
+      <div className="flex items-center justify-between border-b border-gray-400 py-8 px-5">
         <section className="flex">
-          <div className="flex">
-            Phone contact
+          <div className="flex gap-x-3 items-center cursor-pointer group">
+            <Icon name="file-phone-outline" className="cursor-pointer h-8 w-8 group-hover:animate-bounce transition delay-150 duration-300 ease-in-out" />
+            <span className="hidden lg:flex">678-66-08-00</span>
           </div>
         </section>
         <Link href="/">
@@ -59,7 +61,7 @@ const  Nav = () => {
 
       {isNavOpen && 
         ((
-          <div className="flex min-h-screen flex-col text-white items-center justify-center py-24 bg-black gap-y-10 ">
+          <div className="flex min-h-screen flex-col text-white items-center justify-center py-24 bg-black gap-y-10 top-0 lg:static ">
             {links.map((el, i) => (
               <motion.div
                 initial={{ opacity: 0 }}
@@ -72,7 +74,7 @@ const  Nav = () => {
                 key={i}
               >
                 <Link href={el.href} key={i}>
-                  <span className="font-bold text-lg lg:text-4xl uppercase">{el.title}</span>
+                  <span className="font-bold text-xl lg:text-7xl uppercase">{el.title}</span>
                 </Link>
               </motion.div>
             ))}
