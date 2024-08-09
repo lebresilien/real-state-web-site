@@ -8,4 +8,6 @@ export type IconName =
   | "file-phone-outline"
   | "instagram-logo"
   | "linkedin-logo"
+  | "phone-filled"
+  | "phone-outline"
   | "twitter-logo";

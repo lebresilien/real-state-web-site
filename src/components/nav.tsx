@@ -1,10 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Cross1Icon, EyeOpenIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { motion } from "framer-motion";
 import { Icon } from "./ui/icons";
+import { MenuToggle } from "./menu-toggle";
+import useMenuAnimation from "@/hooks/use-animate";
 
 const links = [
   {
@@ -24,20 +26,19 @@ const links = [
     href: '#',
   }
 ];
+
+
 const  Nav = () => {
 
   const [isNavOpen, setIsNavOpen] = useState(false);
-
-  const displayMenu = () => {
-    setIsNavOpen(!isNavOpen);
-  }
+  const scope = useMenuAnimation(isNavOpen);
 
   return (
     <>
       <div className="flex items-center justify-between border-b border-gray-400 py-8 px-5">
         <section className="flex">
           <div className="flex gap-x-3 items-center cursor-pointer group">
-            <Icon name="file-phone-outline" className="cursor-pointer h-8 w-8 group-hover:animate-bounce transition delay-150 duration-300 ease-in-out" />
+            <Icon name="phone-outline" className="cursor-pointer h-8 w-8 group-hover:animate-bounce transition delay-150 duration-300 ease-in-out" />
             <span className="hidden lg:flex">678-66-08-00</span>
           </div>
         </section>
@@ -49,14 +50,17 @@ const  Nav = () => {
               height={50}
           />
         </Link>
-        <nav>
+        <div ref={scope}>
+          <MenuToggle toggle={() => setIsNavOpen(!isNavOpen)} />
+        </div>
+        {/* <nav>
           <section className="flex">
             {isNavOpen ? 
               <Cross1Icon className="cursor-pointer h-10 w-10 hover:text-gray-500" onClick={displayMenu} />:
               <HamburgerMenuIcon className="transition ease-in-out cursor-pointer h-10 w-10 hover:text-gray-500" onClick={displayMenu} />
             }
           </section>
-        </nav>
+        </nav> */}
       </div>
 
       {isNavOpen && 
