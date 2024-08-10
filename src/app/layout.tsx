@@ -18,6 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+        {/* <head>
+          <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"></link>
+        </head> */}
       <body className={inter.className}>
           <Nav />
             {children}
