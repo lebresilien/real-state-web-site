@@ -23,12 +23,12 @@ const About = () => {
                     <div className="max-w-2xl" data-aos="fade-up-left">
                         <h2 className="text-3xl text-center font-extrabold text-gray-900 uppercase sm:text-4xl">A propos</h2>
                         <p className="mt-4 text-gray-600 text-lg">
-                            Le marché immobilier au Cameroun est un véritable labyrinthe semé d'embûches, où chaque 
-                            transaction peut devenir un piège et la confiance est rare. C'est lors d'une rencontre fortuite à 
-                            Dubaï que Vakiss et Loïc, deux jeunes Camerounais, se lient d'amitié. Introduit au monde de 
-                            l'immobilier par Loïc, Vakiss découvre les nombreux défis du marché. Constatant les problèmes 
-                            récurrents et la complexité des transactions, ils décident de fonder ETS Management 
-                            Immobilier. Leur mission : créer un environnement de confiance et de transparence, 
+                            Le marché immobilier au Cameroun est un véritable labyrinthe semé d&apos;embûches, où chaque 
+                            transaction peut devenir un piège et la confiance est rare. C&apos;est lors d&apos;une rencontre fortuite à 
+                            Dubaï que Vakiss et Loïc, deux jeunes Camerounais, se lient d&apos;amitié. Introduit au monde de 
+                            l&apos;immobilier par Loïc, Vakiss découvre les nombreux défis du marché. Constatant les problèmes 
+                            récurrents et la complexité des transactions, ils décident de fonder <span className="font-bold">ETS Management </span> 
+                            Immobilier. Leur mission: créer un environnement de confiance et de transparence, 
                             garantissant des transactions immobilières honnêtes et traçables au Cameroun.  
                         </p>
                         <div className="mt-8 group">

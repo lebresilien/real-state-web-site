@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
+import { Suspense } from 'react'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,20 +12,35 @@ export const metadata: Metadata = {
   description: " Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun.",
 };
 
+async function getData() {
+  const res = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=33448546178178719a87b8991a7fe2fc&page=1')
+ 
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+ 
+  return res.json()
+} 
+async function Posts() {
+  const posts = await getData();
+
+  return (
+    <div>
+      
+    </div>
+  );
+}
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+ 
   return (
     <html lang="en">
-        {/* <head>
-          <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"></link>
-        </head> */}
       <body className={inter.className}>
-          <Nav />
-            {children}
-          <Footer />
+        {children}
       </body>
     </html>
   );
