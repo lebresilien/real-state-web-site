@@ -53,14 +53,6 @@ const  Nav = () => {
         <div ref={scope}>
           <MenuToggle toggle={() => setIsNavOpen(!isNavOpen)} />
         </div>
-        {/* <nav>
-          <section className="flex">
-            {isNavOpen ? 
-              <Cross1Icon className="cursor-pointer h-10 w-10 hover:text-gray-500" onClick={displayMenu} />:
-              <HamburgerMenuIcon className="transition ease-in-out cursor-pointer h-10 w-10 hover:text-gray-500" onClick={displayMenu} />
-            }
-          </section>
-        </nav> */}
       </div>
 
       {isNavOpen && 
