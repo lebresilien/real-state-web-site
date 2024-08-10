@@ -1,13 +1,5 @@
 
-"use client";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
 const Feature = () => {
-
-    useEffect(() => {
-        AOS.init();
-    }, [])
 
     return (
         <section className="w-full mx-auto px-4 space-y-6 bg-slate-50 py-8 my-12 lg:my-24 md:py-12 lg:py-20">

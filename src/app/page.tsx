@@ -1,8 +1,18 @@
+"use client";
 import Image from "next/image";
+import { useEffect } from 'react';
 import InputButton from "@/components/input-button";
 import Feature from "@/components/features";
+import About from "@/components/about";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function Home() {
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       
@@ -27,6 +37,8 @@ export default function Home() {
       </section>
     
       <Feature />
+
+      <About />
 
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
         <a
