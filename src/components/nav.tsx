@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Cross1Icon, EyeOpenIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { motion } from "framer-motion";
 import { Icon } from "./ui/icons";
 import { MenuToggle } from "./menu-toggle";
 import useMenuAnimation from "@/hooks/use-animate";
+import { NavigationContext } from "@/context/navigationContext";
 
 const links = [
   {
@@ -30,7 +31,7 @@ const links = [
 
 const  Nav = () => {
 
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const { isNavOpen, setIsNavOpen } = useContext(NavigationContext);
   const scope = useMenuAnimation(isNavOpen);
 
   return (

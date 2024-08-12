@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import InputButton from "@/components/input-button";
 import Feature from "@/components/features";
 import About from "@/components/about";
@@ -8,11 +8,13 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
+import { NavigationContext } from "@/context/navigationContext";
 
 export default function Home() {
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const {isNavOpen} = useContext(NavigationContext);
 
     useEffect(() => {
         AOS.init();
@@ -36,12 +38,12 @@ export default function Home() {
     }, [data])
 
   return (
-    <>
+    <div className={isNavOpen ? "h-screen overflow-hidden" : "h-screen"}>
       {!loading ?
        <div className="flex items-center justify-center h-screen">
           <span className="relative flex h-24 w-24">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-20 w-20 bg-sky-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-20 w-20 bg-blue-600"></span>
           </span>
        </div> :
        <>
@@ -145,6 +147,6 @@ export default function Home() {
         <Footer />
         </>
       }
-    </>
+    </div>
   );
 }
