@@ -9,9 +9,9 @@ const Footer = () => {
 	return (
 		<footer className="bg-gray-900">
 			<div className="w-full max-w-screen-2xl">
-				<div className="px-4 py-6 md:flex md:justify-between lg:px-10 lg:py-8">
+				<div className="px-4 py-6 md:flex md:space-x-60 lg:px-10 lg:py-8">
 					<div className="mb-6 flex md:mb-0">
-						<div className="flex flex-col items-center">
+						<div className="flex flex-col items-center space-y-6 md:space-y-12">
 							<div className="">
 								<Link href="/">
 									<Image
@@ -30,14 +30,14 @@ const Footer = () => {
 									/>
 								</Link>
 							</div>
-							<div className="">
-								<span className="block self-center whitespace-nowrap text-sm font-semibold  text-white sm:text-xl">
-									trust by many
-								</span>
+							<div className="max-w-sm md:max-w-sm">
+								<p className="text-xs text-center text-white lg:text-sm">
+									Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun.
+								</p>
 							</div>
 						</div>
 					</div>
-					<div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
+					<div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6 md:space-x-24">
 						<div>
 							<h2 className="mb-6 text-sm font-semibold uppercase text-white">
 								Navigation
@@ -118,44 +118,14 @@ const Footer = () => {
 					</div>
 				</div>
 
-				<div className="flex flex-col items-center space-y-3 overflow-hidden px-4 md:flex-row md:justify-between md:space-y-0 lg:px-10">
+				{/* <div className="flex flex-col items-center space-y-3 overflow-hidden px-4 md:flex-row md:justify-between md:space-y-0 lg:px-10">
 					<div className="max-w-sm md:max-w-3xl">
 						<p className="text-xs text-center text-white lg:text-sm">
                             Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun.
 						</p>
 					</div>
-					<div className="flex flex-row space-x-2 md:space-x-3">
-						<Image
-							width={208}
-							height={65}
-							src="/images/app-store.png"
-							alt="Zeeka App Store"
-							className="hidden sm:block"
-						/>
-						<Image
-							width={120}
-							height={48}
-							src="/images/app-store.png"
-							alt="Zeeka App Store"
-							className="sm:hidden"
-						/>
-
-						<Image
-							width={208}
-							height={65}
-							src="/images/google-play.png"
-							alt="Zeeka Google Play"
-							className="hidden sm:block"
-						/>
-						<Image
-							width={120}
-							height={48}
-							src="/images/google-play.png"
-							alt="Zeeka Google Play"
-							className="sm:hidden"
-						/>
-					</div>
-				</div>
+					
+				</div> */}
 
 				<hr className="my-6 border-gray-200 lg:my-8" />
 

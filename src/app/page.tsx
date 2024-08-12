@@ -9,44 +9,73 @@ import 'aos/dist/aos.css';
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { NavigationContext } from "@/context/navigationContext";
+import { Advantage, Service, Testimony, Vision } from "../../types";
+import axios from "axios";
 
+interface Data {
+  services: Service[]
+  testimonies: Testimony[]
+  advantages: Advantage[]
+  visions: Vision[]
+}
 export default function Home() {
 
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState<Data>({
+      services: [],
+      testimonies: [],
+      advantages: [],
+      visions: [],
+    });
+
+    const [services, setServices] = useState(null);
+
+    const [loading, setLoading] = useState(true);
     const {isNavOpen} = useContext(NavigationContext);
 
     useEffect(() => {
-        AOS.init();
-    }, [])
-
-    useEffect(() => {
-      async function FetchData() {
-        fetch('https://api.themoviedb.org/3/movie/popular?api_key=33448546178178719a87b8991a7fe2fc&page=1')
+      axios.get(`${process.env.NEXT_PUBLIC_URL}/api/init`)
         .then(res => {
-          res.json().then(response => { 
-              setData(response.results);
-              setLoading(true);
-          })
+          setServices(res.data.services);
+          console.log('response', res.data.services);
+          console.log('serivces', services);
+          setLoading(false);
         })
-        
+      /* async function FetchData() {
+        try {
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/init`);
+            setServices(res.data.services);
+            console.log('cons', res.data.services);
+            console.log('services', services);
+        } catch (err) {
+          console.log('erroooeoe');
+        } finally {
+          setLoading(false);
+        }
       }
-      setTimeout(() => {
+      FetchData();
+       setTimeout(() => {
         FetchData();
-      }, 5000);
-      return () => clearInterval(5000)
-    }, [data])
+      }, 3000);
+      return () => clearInterval(3000) */
+    }, [])
+    
+    useEffect(() => {
+        AOS.init();
+    }, []);
 
-  return (
-    <div className={isNavOpen ? "h-screen overflow-hidden" : "h-screen"}>
-      {!loading ?
-       <div className="flex items-center justify-center h-screen">
+    if(loading) return (
+      <div className="flex items-center justify-center h-screen">
           <span className="relative flex h-24 w-24">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-20 w-20 bg-blue-600"></span>
           </span>
-       </div> :
-       <>
+       </div>
+    )
+
+    if (!services) return <p>No profile data</p>
+
+  return (
+    <div className={isNavOpen ? "h-screen overflow-hidden" : "h-screen"}>
         <Nav />
           <main className="flex min-h-screen flex-col items-center justify-between">
             
@@ -70,9 +99,8 @@ export default function Home() {
               </div>
             </section>
           
-            <Feature />
-
-            <About />
+            <Feature services={services} />
+            <About advantages={data?.advantages} visions={data?.visions} />
 
             <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
               <a
@@ -145,8 +173,6 @@ export default function Home() {
             </div>
           </main>
         <Footer />
-        </>
-      }
     </div>
   );
 }

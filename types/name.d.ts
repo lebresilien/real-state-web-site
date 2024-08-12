@@ -2,6 +2,7 @@
 
 export type IconName =
   | "accessible-filled"
+  | "arrow-left"
   | "arrow-right"
   | "border-all"
   | "border-style"

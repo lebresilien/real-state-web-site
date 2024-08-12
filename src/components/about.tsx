@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import ListItem from "./list-item";
+import { Advantage, Vision } from "../../types";
 
-const About = () => {
+const About = (advantages: Advantage[], visions: Vision[]) => {
     return (
         <section className="bg-white">
             <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -35,6 +37,28 @@ const About = () => {
                             <Link href="#" className="text-blue-500 hover:text-blue-600 font-medium">Contactez nous
                                 <span className="ml-2 group-hover:animate-pulse">&#8594;</span></Link>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="w-screen mx-auto py-16 px-4 bg-slate-50 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 md:mt-0" data-aos="zoom-in-up">
+                    <div className="flex flex-col items-center">
+                        <h5 className="text-xl mb-3 text-center font-extrabold text-gray-900 uppercase sm:text-2xl">notre vision</h5>
+                        <ul className="space-y-2">
+                            <ListItem text="Appropchoe" />
+                            <ListItem text="Appropchoffe" /> 
+                            <ListItem text="hello" /> 
+                            <ListItem text="tag" /> 
+                        </ul>
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                        <h5 className="text-xl mb-3 text-center font-extrabold text-gray-900 uppercase sm:text-2xl">ce qui nous différencie </h5>
+                        <ul className="space-y-2">
+                            <ListItem text="Appropchoe" />
+                            <ListItem text="Appropchoffe" /> 
+                        </ul>
                     </div>
                 </div>
             </div>
