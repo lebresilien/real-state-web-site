@@ -27,7 +27,7 @@ const About = ({ advantages, visions }: {advantages: Advantage[], visions: Visio
                     </div>
                     <div className="max-w-2xl" data-aos="fade-up-left">
                         <h2 className="text-3xl text-center font-extrabold text-gray-900 uppercase sm:text-4xl">A propos</h2>
-                        <p className="mt-4 text-gray-600 text-lg">
+                        <p className="mt-4 text-gray-600 text-md lg:text-lg">
                             Le marché immobilier au Cameroun est un véritable labyrinthe semé d&apos;embûches, où chaque 
                             transaction peut devenir un piège et la confiance est rare. C&apos;est lors d&apos;une rencontre fortuite à 
                             Dubaï que Vakiss et Loïc, deux jeunes Camerounais, se lient d&apos;amitié. Introduit au monde de 

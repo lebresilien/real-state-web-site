@@ -11,6 +11,7 @@ import Footer from "@/components/footer";
 import { NavigationContext } from "@/context/navigationContext";
 import { Advantage, Service, Testimony, Vision } from "../../types";
 import axios from "axios";
+import Slide from "@/components/caroussel";
 
 interface Data {
   services: Service[]
@@ -28,7 +29,7 @@ export default function Home() {
     useEffect(() => {
       const fetchUsers = async () => {
         try {
-          const response = await fetch('/api/home');
+          const response = await fetch('/api/home', { next: { revalidate: 3600 } });
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
@@ -87,6 +88,7 @@ export default function Home() {
         
             <About advantages={data ? data.advantages : []} visions={data ? data.visions : []} />
 
+            <Slide />
           {/*   <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
               <a
                 href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
