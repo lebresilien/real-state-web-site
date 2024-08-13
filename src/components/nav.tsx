@@ -43,12 +43,7 @@ const  Nav = () => {
           </div>
         </section>
         <Link href="/">
-          <Image 
-              src="https://designbygio.it/images/logo.png" 
-              alt="Real State Logo" 
-              width={50}
-              height={50}
-          />
+          <span className="text-blue-500 font-bold font-serif text-2xl">E.M.I</span>
         </Link>
         <div ref={scope}>
           <MenuToggle toggle={() => setIsNavOpen(!isNavOpen)} />

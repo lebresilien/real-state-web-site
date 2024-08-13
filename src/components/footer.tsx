@@ -1,8 +1,6 @@
 'use client'
-import { FaceIcon, InstagramLogoIcon, LinkedInLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { Icon } from './ui/icons'
 
 const Footer = () => {
@@ -11,20 +9,20 @@ const Footer = () => {
 			<div className="w-full max-w-screen-2xl">
 				<div className="px-4 py-6 md:flex md:space-x-60 lg:px-10 lg:py-8">
 					<div className="mb-6 flex md:mb-0">
-						<div className="flex flex-col items-center space-y-6 md:space-y-12">
+						<div className="flex flex-col items-center space-y-1 md:space-y-2">
 							<div className="">
 								<Link href="/">
 									<Image
-										width={292.5}
-										height={78}
-										src="https://designbygio.it/images/logo.png"
+										width={200}
+										height={60}
+										src="/images/emi.png"
 										alt="Real State Logo"
 										className="hidden sm:block"
 									/>
 									<Image
-										width={120}
-										height={50}
-										src="https://designbygio.it/images/logo.png"
+										width={90}
+										height={30}
+										src="/images/emi.png"
 										alt="Real State Logo"
 										className="sm:hidden"
 									/>
