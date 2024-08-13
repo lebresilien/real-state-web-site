@@ -39,10 +39,10 @@ const Footer = () => {
 					</div>
 					<div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6 md:space-x-24">
 						<div>
-							<h2 className="mb-6 text-sm font-semibold uppercase text-white">
+							<h2 className="mb-6 text-md font-semibold uppercase text-white">
 								Navigation
 							</h2>
-							<ul className="text-xs capitalize text-white">
+							<ul className="text-sm capitalize text-white">
 								<li className="mb-2">
 									<Link href="/" className="hover:underline">
 										accueil
@@ -71,10 +71,10 @@ const Footer = () => {
 							</ul>
 						</div>
 						<div>
-							<h2 className="mb-6 text-sm font-semibold uppercase text-white">
+							<h2 className="mb-6 text-md font-semibold uppercase text-white">
 								a propos
 							</h2>
-							<ul className="text-xs capitalize text-white">
+							<ul className="text-sm capitalize text-white">
 								<li className="mb-2">
 									<Link href="#" className="hover:underline ">
 										confidentialité
@@ -93,10 +93,10 @@ const Footer = () => {
 							</ul>
 						</div>
 						<div>
-							<h2 className="mb-6 text-sm font-semibold uppercase text-white">
+							<h2 className="mb-6 text-md font-semibold uppercase text-white">
 								careers
 							</h2>
-							<ul className="text-xs capitalize text-white">
+							<ul className="text-sm capitalize text-white">
 								<li className="mb-2">
 									<Link href="#" className="hover:underline">
 										centre d&apos;aide
@@ -118,29 +118,20 @@ const Footer = () => {
 					</div>
 				</div>
 
-				{/* <div className="flex flex-col items-center space-y-3 overflow-hidden px-4 md:flex-row md:justify-between md:space-y-0 lg:px-10">
-					<div className="max-w-sm md:max-w-3xl">
-						<p className="text-xs text-center text-white lg:text-sm">
-                            Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun.
-						</p>
-					</div>
-					
-				</div> */}
-
 				<hr className="my-6 border-gray-200 lg:my-8" />
 
 				<div className="px-4 py-6 sm:flex sm:items-center sm:justify-between lg:px-10 lg:py-8">
-					<div className="space-x-3">
-						<span className="text-sm text-white sm:text-center">
+					<div className="space-x-3 text-md">
+						<span className="text-white sm:text-center">
 							Copyright© 2024 company
 						</span>
-						<span className="text-xs text-white sm:text-center">
+						<span className="text-white sm:text-center">
 							cookies
 						</span>
-						<span className="text-xs text-white sm:text-center">
+						<span className="text-white sm:text-center">
 							site map
 						</span>
-						<span className="text-xs text-white sm:text-center">
+						<span className="text-white sm:text-center">
 							legacy
 						</span>
 					</div>
