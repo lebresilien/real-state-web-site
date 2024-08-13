@@ -20,43 +20,29 @@ interface Data {
 }
 export default function Home() {
 
-    const [data, setData] = useState<Data>({
-      services: [],
-      testimonies: [],
-      advantages: [],
-      visions: [],
-    });
-
-    const [services, setServices] = useState(null);
+    const [data, setData] = useState<Data | null>(null);
 
     const [loading, setLoading] = useState(true);
     const {isNavOpen} = useContext(NavigationContext);
 
     useEffect(() => {
-      axios.get(`${process.env.NEXT_PUBLIC_URL}/api/init`)
-        .then(res => {
-          setServices(res.data.services);
-          console.log('response', res.data.services);
-          console.log('serivces', services);
-          setLoading(false);
-        })
-      /* async function FetchData() {
+      const fetchUsers = async () => {
         try {
-          const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/init`);
-            setServices(res.data.services);
-            console.log('cons', res.data.services);
-            console.log('services', services);
-        } catch (err) {
-          console.log('erroooeoe');
+          const response = await fetch('/api/home');
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          setData(data);
+        } catch (error) {
+          console.log('errror', error);
         } finally {
           setLoading(false);
         }
-      }
-      FetchData();
-       setTimeout(() => {
-        FetchData();
-      }, 3000);
-      return () => clearInterval(3000) */
+      };
+  
+      fetchUsers();
+     
     }, [])
     
     useEffect(() => {
@@ -71,8 +57,6 @@ export default function Home() {
           </span>
        </div>
     )
-
-    if (!services) return <p>No profile data</p>
 
   return (
     <div className={isNavOpen ? "h-screen overflow-hidden" : "h-screen"}>
@@ -99,10 +83,11 @@ export default function Home() {
               </div>
             </section>
           
-            <Feature services={services} />
-            <About advantages={data?.advantages} visions={data?.visions} />
+           <Feature services={data ? data.services : []} />
+        
+            <About advantages={data ? data.advantages : []} visions={data ? data.visions : []} />
 
-            <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
+          {/*   <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
               <a
                 href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
                 className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
@@ -170,9 +155,10 @@ export default function Home() {
                   Instantly deploy your Next.js site to a shareable URL with Vercel.
                 </p>
               </a>
-            </div>
+            </div> */}
           </main>
         <Footer />
     </div>
   );
 }
+

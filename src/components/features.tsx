@@ -1,7 +1,6 @@
 import { Service } from "../../types";
 
-const Feature = (services: Service[] | []) => {
-
+const Feature = ({ services }: { services: Service[] }) => {
     return (
         <section className="w-full mx-auto px-4 space-y-6 bg-slate-50 py-8 my-12 lg:my-24 md:py-12 lg:py-20">
 
@@ -19,7 +18,7 @@ const Feature = (services: Service[] | []) => {
                 </div>
 
                 <div className="mx-auto grid justify-center gap-4 mt-5 lg:mt-10 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-                    {services.length > 0 &&  services.map((service, index) => (
+                    {services.map((service, index) => (
                             <div
                                 key={index}
                                 className="relative overflow-hidden rounded-lg border bg-white select-none hover:shadow hover:shadow-blue-500 p-2"

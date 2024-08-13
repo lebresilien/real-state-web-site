@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useContext } from "react";
-import { Cross1Icon, EyeOpenIcon, HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { useContext } from "react";
 import { motion } from "framer-motion";
 import { Icon } from "./ui/icons";
 import { MenuToggle } from "./menu-toggle";

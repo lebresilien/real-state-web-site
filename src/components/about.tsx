@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import ListItem from "./list-item";
 import { Advantage, Vision } from "../../types";
+import { motion } from "framer-motion";
 
-const About = (advantages: Advantage[], visions: Vision[]) => {
+const About = ({ advantages, visions }: {advantages: Advantage[], visions: Vision[]}) => {
     return (
         <section className="bg-white">
             <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -46,18 +47,40 @@ const About = (advantages: Advantage[], visions: Vision[]) => {
                     <div className="flex flex-col items-center">
                         <h5 className="text-xl mb-3 text-center font-extrabold text-gray-900 uppercase sm:text-2xl">notre vision</h5>
                         <ul className="space-y-2">
-                            <ListItem text="Appropchoe" />
-                            <ListItem text="Appropchoffe" /> 
-                            <ListItem text="hello" /> 
-                            <ListItem text="tag" /> 
+                            {visions.map((item, index) => (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    whileHover={{ scale: 1.1 }}
+                                    transition={{
+                                        duration: 0.25,
+                                        delay: index / 10,
+                                    }}
+                                    key={index}
+                                >
+                                    <ListItem text={item.name} />
+                                </motion.div>
+                            ))}
                         </ul>
                     </div>
 
                     <div className="flex flex-col items-center">
                         <h5 className="text-xl mb-3 text-center font-extrabold text-gray-900 uppercase sm:text-2xl">ce qui nous différencie </h5>
                         <ul className="space-y-2">
-                            <ListItem text="Appropchoe" />
-                            <ListItem text="Appropchoffe" /> 
+                            {advantages.map((item, index) => (
+                                <motion.div
+                                 initial={{ opacity: 0 }}
+                                 animate={{ opacity: 1 }}
+                                 whileHover={{ scale: 1.1 }}
+                                 transition={{
+                                     duration: 0.25,
+                                     delay: index / 10,
+                                 }}
+                                 key={index}
+                                >
+                                    <ListItem text={item.name} />
+                                </motion.div>
+                            ))}
                         </ul>
                     </div>
                 </div>
