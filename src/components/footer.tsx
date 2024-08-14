@@ -119,7 +119,7 @@ const Footer = () => {
 				<hr className="my-6 border-gray-200 lg:my-8" />
 
 				<div className="px-4 py-6 sm:flex sm:items-center sm:justify-between lg:px-10 lg:py-8">
-					<div className="space-x-3 text-md">
+					<div className="space-x-3 text-sm">
 						<span className="text-white sm:text-center">
 							Copyright© 2024 company
 						</span>

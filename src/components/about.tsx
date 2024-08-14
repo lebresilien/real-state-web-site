@@ -8,7 +8,7 @@ import { Icon } from "./ui/icons";
 
 const About = ({ advantages, visions }: {advantages: Advantage[], visions: Vision[]}) => {
     return (
-        <section className="bg-white">
+        <section className="bg-white w-full">
             <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
                     <div className="mt-12 md:mt-0" data-aos="fade-up-right">
@@ -47,7 +47,7 @@ const About = ({ advantages, visions }: {advantages: Advantage[], visions: Visio
                 </div>
             </div>
 
-            <div className="w-screen mx-auto py-16 px-4 bg-slate-50 sm:px-6 lg:px-8">
+            <div className="w-full mx-auto py-16 px-4 bg-slate-50 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 md:mt-0" data-aos="zoom-in-up">
                     <div className="flex flex-col items-center">
                         <h5 className="text-xl mb-3 text-center font-extrabold text-gray-900 uppercase sm:text-2xl">notre vision</h5>

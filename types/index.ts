@@ -6,9 +6,8 @@ export interface Service {
 
 export interface Testimony {
     id: number 
-    name: string
+    fullName: string
     picture: string
-    surname: string
     citation: string
 }
 
