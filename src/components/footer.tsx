@@ -5,9 +5,9 @@ import { Icon } from './ui/icons'
 
 const Footer = () => {
 	return (
-		<footer className="bg-gray-900">
+		<footer className="">
 			<div className="w-full max-w-screen-2xl">
-				<div className="px-4 py-6 md:flex md:space-x-60 lg:px-10 lg:py-8">
+				<div className="bg-gray-800 px-4 py-6 md:flex md:space-x-60 lg:px-10 lg:py-8">
 					<div className="mb-6 flex md:mb-0">
 						<div className="flex flex-col items-center space-y-1 md:space-y-2">
 							<div className="">
@@ -116,9 +116,9 @@ const Footer = () => {
 					</div>
 				</div>
 
-				<hr className="my-6 border-gray-200 lg:my-8" />
+				{/* <hr className="my-6 border-gray-200 lg:my-8" /> */}
 
-				<div className="px-4 py-6 sm:flex sm:items-center sm:justify-between lg:px-10 lg:py-8">
+				<div className="bg-gray-900 px-4 py-6 sm:flex sm:items-center sm:justify-between lg:px-10 lg:py-8">
 					<div className="space-x-3 text-sm">
 						<span className="text-white sm:text-center">
 							Copyright© 2024 company

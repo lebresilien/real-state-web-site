@@ -24,6 +24,18 @@
       "transformers": [
         "transform-icon.ts"
       ]
+    },
+    {
+      "name": "simple-icons",
+      "directory": "./other/svg-icons",
+      "postinstall": [
+        "npm",
+        "run",
+        "build:icons"
+      ],
+      "transformers": [
+        "transform-icon.ts"
+      ]
     }
   ]
 }

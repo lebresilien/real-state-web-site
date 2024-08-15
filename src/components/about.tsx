@@ -8,7 +8,7 @@ import { Icon } from "./ui/icons";
 
 const About = ({ advantages, visions }: {advantages: Advantage[], visions: Vision[]}) => {
     return (
-        <section className="bg-white w-full">
+        <section className="bg-white overflow-hidden">
             <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
                     <div className="mt-12 md:mt-0" data-aos="fade-up-right">

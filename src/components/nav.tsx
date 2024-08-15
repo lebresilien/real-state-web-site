@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import { motion } from "framer-motion";
@@ -35,7 +34,7 @@ const  Nav = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between border-b border-gray-400 py-8 px-5">
+      <div className="z-50 copy flex items-center justify-between py-8 px-5">
         <section className="flex">
           <div className="flex gap-x-3 items-center cursor-pointer group">
             <Icon name="phone-outline" className="cursor-pointer h-8 w-8 group-hover:animate-bounce transition delay-150 duration-300 ease-in-out" />
@@ -52,7 +51,7 @@ const  Nav = () => {
 
       {isNavOpen && 
         ((
-          <div className="flex min-h-screen flex-col text-white items-center justify-center py-24 bg-black gap-y-10 top-0 lg:static ">
+          <div className="flex min-h-screen flex-col text-white items-center justify-center py-24 bg-black gap-y-10 top-0">
             {links.map((el, i) => (
               <motion.div
                 initial={{ opacity: 0 }}

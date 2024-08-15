@@ -61,10 +61,10 @@ export default function Home() {
 
   return (
     <div className={isNavOpen ? "h-screen overflow-hidden" : "h-screen"}>
-        <Nav />
+        
           <main className="flex min-h-screen flex-col items-center justify-between">
-            
-            <section className="relative font-serif h-screen w-full flex flex-col items-center justify-center text-center text-white">
+          
+            <section className="relative font-serif mb-12 pb-24 lg:pb-0 h-container lg:h-screen w-full flex flex-col text-center text-white">
               <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
                   <video className="min-w-full min-h-full absolute object-cover"
                     src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
@@ -73,14 +73,18 @@ export default function Home() {
                     loop
                   ></video>
               </div>
-              <div className="space-y-2 z-10">
-                  <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">like steroids</h1>
-                  <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">for business</h1>
-                  <span className="block font-light text-lg lg:text-2xl max-w-4xl">
-                    Growing a business is hard. We make it whole lot easier, more predictable,
-                    less stressful, and more fun
-                  </span>
-                  <InputButton />
+              
+              <div className={isNavOpen ? "z-50" : "space-y-16 lg:space-y-24 z-50"}>
+                  <Nav />
+                  <div className="container space-y-2 flex flex-col items-center justify-between">
+                    <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">like steroids</h1>
+                    <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">for business</h1>
+                    <span className="block font-light text-lg lg:text-2xl max-w-4xl">
+                      Growing a business is hard. We make it whole lot easier, more predictable,
+                      less stressful, and more fun
+                    </span>
+                    <InputButton />
+                  </div>
               </div>
             </section>
           

@@ -4,8 +4,8 @@ import { Icon } from "./ui/icons";
 
 const InputButton = () => {
     return (
-        <form>
-            <div className="relative mt-2 mx-3"> 
+        <form className="w-full md:w-2/3">
+            <div className="relative mt-2"> 
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <span className="text-gray-500 sm:text-sm">$</span>
                 </div>
