@@ -4,6 +4,7 @@ export type IconName =
   | "accessible-filled"
   | "arrow-left"
   | "arrow-right"
+  | "arrow-up"
   | "border-all"
   | "border-style"
   | "figma-logo"
@@ -12,4 +13,5 @@ export type IconName =
   | "linkedin-logo"
   | "phone-filled"
   | "phone-outline"
-  | "twitter-logo";
+  | "twitter-logo"
+  | "watsapp";

@@ -24,8 +24,13 @@ export default function Home() {
     const [data, setData] = useState<Data | null>(null);
 
     const [loading, setLoading] = useState(true);
-    const {isNavOpen} = useContext(NavigationContext);
-
+    const [isScroll, setIsScroll] = useState(false);
+    const { isNavOpen, setIsNavOpen } = useContext(NavigationContext);
+  
+    const handleScroll = () =>  {
+      if(window.scrollY >= 20) setIsScroll(true);
+      else setIsScroll(false);
+    }
     useEffect(() => {
       const fetchUsers = async () => {
         try {
@@ -50,6 +55,16 @@ export default function Home() {
         AOS.init();
     }, []);
 
+    useEffect(() => {  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+
+   
+
     if(loading) return (
       <div className="flex items-center justify-center h-screen">
           <span className="relative flex h-24 w-24">
@@ -62,7 +77,7 @@ export default function Home() {
   return (
     <div className={isNavOpen ? "h-screen overflow-hidden" : "h-screen"}>
         
-          <main className="flex min-h-screen flex-col items-center justify-between">
+          <main className="flex min-h-screen flex-col items-center justify-between" onScroll={handleScroll}>
           
             <section className="relative font-serif mb-12 pb-24 lg:pb-0 h-container lg:h-screen w-full flex flex-col text-center text-white">
               <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -75,7 +90,7 @@ export default function Home() {
               </div>
               
               <div className={isNavOpen ? "z-50" : "space-y-16 lg:space-y-24 z-50"}>
-                  <Nav />
+                  <Nav isScroll={isScroll} />
                   <div className="container space-y-2 flex flex-col items-center justify-between">
                     <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">like steroids</h1>
                     <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">for business</h1>

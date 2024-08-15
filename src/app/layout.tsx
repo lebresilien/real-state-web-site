@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavigationProvider from "@/context/navigationContext";
+import { Icon } from "@/components/ui/icons";
+import Image from "next/image";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +21,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavigationProvider>{children}</NavigationProvider>
+        <NavigationProvider>
+          <>
+            <div className="flex fixed bottom-20 right-3 hover:-translate-y-2 duration-300 z-50">
+              <Link href="https://api.whatsapp.com/send?phone=23778660800" target="_blank">
+                <Image 
+                  src="/images/whatsapp.svg" 
+                  alt="Watsapp logo"
+                  height={60}
+                  width={60}
+                />
+              </Link>
+            </div>
+            <div id="fixed-button" className="flex h-12 w-12 p-2 cursor-pointer bg-primary rounded-full fixed bottom-2 right-3 justify-center items-center hover:bg-secondary block">
+              <Icon name="arrow-up" />
+            </div>
+            {children}
+          </>
+        </NavigationProvider>
       </body>
     </html>
   );

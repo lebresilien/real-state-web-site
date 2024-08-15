@@ -27,14 +27,19 @@ const links = [
 ];
 
 
-const  Nav = () => {
+const  Nav = ({isScroll}: {isScroll: boolean}) => {
 
   const { isNavOpen, setIsNavOpen } = useContext(NavigationContext);
-  const scope = useMenuAnimation(isNavOpen);
+  const scope = useMenuAnimation(isNavOpen)
 
   return (
     <>
-      <div className="z-50 copy flex items-center justify-between py-8 px-5">
+      <div 
+        data-aos={isScroll ? "fade-down" : ""}
+        className={isScroll ? "fixed bg-primary w-full z-50 flex items-center justify-between py-8 px-5": 
+                "fixed copy w-full z-50 flex items-center justify-between py-8 px-5"
+        }
+      >
         <section className="flex">
           <div className="flex gap-x-3 items-center cursor-pointer group">
             <Icon name="phone-outline" className="cursor-pointer h-8 w-8 group-hover:animate-bounce transition delay-150 duration-300 ease-in-out" />
