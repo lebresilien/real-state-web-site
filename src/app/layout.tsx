@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavigationProvider from "@/context/navigationContext";
-import { Icon } from "@/components/ui/icons";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -32,9 +31,6 @@ export default function RootLayout({
                   width={60}
                 />
               </Link>
-            </div>
-            <div id="fixed-button" className="flex h-12 w-12 p-2 cursor-pointer bg-primary rounded-full fixed bottom-2 right-3 justify-center items-center hover:bg-secondary block">
-              <Icon name="arrow-up" />
             </div>
             {children}
           </>

@@ -10,7 +10,7 @@ import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { NavigationContext } from "@/context/navigationContext";
 import { Advantage, Service, Testimony, Vision } from "../../types";
-import axios from "axios";
+import { Icon } from "@/components/ui/icons";
 import Slide from "@/components/caroussel";
 
 interface Data {
@@ -30,6 +30,13 @@ export default function Home() {
     const handleScroll = () =>  {
       if(window.scrollY >= 20) setIsScroll(true);
       else setIsScroll(false);
+    }
+
+    const scrollToTop = () =>  {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     }
     useEffect(() => {
       const fetchUsers = async () => {
@@ -61,9 +68,7 @@ export default function Home() {
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
-    }, []);
-
-   
+    }, []); 
 
     if(loading) return (
       <div className="flex items-center justify-center h-screen">
@@ -111,6 +116,9 @@ export default function Home() {
        
           </main>
         <Footer />
+        <div onClick={scrollToTop} data-aos="fade-down" data-aos-anchor-placement="bottom-center" className="flex h-12 w-12 p-2 cursor-pointer bg-primary rounded-full fixed bottom-2 right-3 justify-center items-center hover:bg-secondary block">
+              <Icon name="arrow-up" className="text-white"/>
+        </div>
     </div>
   );
 }
