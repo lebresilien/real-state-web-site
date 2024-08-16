@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Template from "@/components/templates/layout";
 import NavigationProvider from "@/context/navigationContext";
-import Image from "next/image";
-import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Immobilier",
-  description: " Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun.",
+  description: "Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun.",
 };
 
 export default function RootLayout({
@@ -19,21 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-slate-50`}>
         <NavigationProvider>
-          <>
-            <div className="flex fixed bottom-20 right-3 hover:-translate-y-2 duration-300 z-50">
-              <Link href="https://api.whatsapp.com/send?phone=23778660800" target="_blank">
-                <Image 
-                  src="/images/whatsapp.svg" 
-                  alt="Watsapp logo"
-                  height={60}
-                  width={60}
-                />
-              </Link>
-            </div>
-            {children}
-          </>
+          <Template children={children} />
         </NavigationProvider>
       </body>
     </html>

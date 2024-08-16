@@ -24,21 +24,7 @@ export default function Home() {
     const [data, setData] = useState<Data | null>(null);
 
     const [loading, setLoading] = useState(true);
-    const [isScroll, setIsScroll] = useState(false);
-    const { isNavOpen, setIsNavOpen } = useContext(NavigationContext);
-  
-    const handleScroll = () =>  {
-      if(window.scrollY >= 20) setIsScroll(true);
-      else setIsScroll(false);
-    }
-
-    const scrollToTop = () =>  {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      })
-    }
-    useEffect(() => {
+     useEffect(() => {
       const fetchUsers = async () => {
         try {
           const response = await fetch('/api/home');
@@ -57,18 +43,6 @@ export default function Home() {
       fetchUsers();
      
     }, [])
-    
-    useEffect(() => {
-        AOS.init();
-    }, []);
-
-    useEffect(() => {  
-      window.addEventListener('scroll', handleScroll);
-  
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, []); 
 
     if(loading) return (
       <div className="flex items-center justify-center h-screen">
@@ -80,45 +54,37 @@ export default function Home() {
     )
 
   return (
-    <div className={isNavOpen ? "h-screen overflow-hidden" : "h-screen"}>
-        
-          <main className="flex min-h-screen flex-col items-center justify-between" onScroll={handleScroll}>
-          
-            <section className="relative font-serif mb-12 pb-24 lg:pb-0 h-container lg:h-screen w-full flex flex-col text-center text-white">
-              <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
-                  <video className="min-w-full min-h-full absolute object-cover"
-                    src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
-                    autoPlay
-                    muted
-                    loop
-                  ></video>
-              </div>
-              
-              <div className={isNavOpen ? "z-50" : "space-y-16 lg:space-y-24 z-50"}>
-                  <Nav isScroll={isScroll} />
-                  <div className="container space-y-2 flex flex-col items-center justify-between">
-                    <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">like steroids</h1>
-                    <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">for business</h1>
-                    <span className="block font-light text-lg lg:text-2xl max-w-4xl">
-                      Growing a business is hard. We make it whole lot easier, more predictable,
-                      less stressful, and more fun
-                    </span>
-                    <InputButton />
-                  </div>
-              </div>
-            </section>
-          
-           <Feature services={data ? data.services : []} />
-        
-            <About advantages={data ? data.advantages : []} visions={data ? data.visions : []} />
+    <div className="flex h-full flex-col items-center lg:min-h-screen ">
 
-            <Slide testimonies={data ? data.testimonies : []} />
-       
-          </main>
-        <Footer />
-        <div onClick={scrollToTop} data-aos="fade-down" data-aos-anchor-placement="bottom-center" className="flex h-12 w-12 p-2 cursor-pointer bg-primary rounded-full fixed bottom-2 right-3 justify-center items-center hover:bg-secondary block">
-              <Icon name="arrow-up" className="text-white"/>
+      <section className="font-serif mb-24 pb-0 w-full flex flex-col justify-center items-center text-center text-white lg:h-screen lg:pb-0 lg:pt-20 lg:pb-24 lg:mb-0">
+        <div className="video-docker absolute top-0 left-0 h-[500px] w-full lg:h-full overflow-hidden">
+            <video className="absolute object-cover lg:min-w-full lg:min-h-full"
+              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+              autoPlay
+              muted
+              loop
+            ></video>
         </div>
+                    
+        <div className="container z-50 space-y-16 mt-40 lg:space-y-0 lg:mt-20"/* className={isNavOpen ? "z-50" : "space-y-16 lg:space-y-24 z-50"} */>
+          <div className="space-y-2 flex flex-col items-center justify-between">
+            <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">like steroids</h1>
+            <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">for business</h1>
+            <span className="block font-light text-lg lg:text-2xl max-w-4xl">
+                Growing a business is hard. We make it whole lot easier, more predictable,
+                less stressful, and more fun
+            </span>
+            <InputButton />
+          </div>
+        </div>
+      </section>
+    
+        <Feature services={data ? data.services : []} />
+    
+        <About advantages={data ? data.advantages : []} visions={data ? data.visions : []} />
+
+        <Slide testimonies={data ? data.testimonies : []} /> 
+       
     </div>
   );
 }

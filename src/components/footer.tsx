@@ -5,7 +5,7 @@ import { Icon } from './ui/icons'
 
 const Footer = () => {
 	return (
-		<footer className="">
+		<footer className="w-full">
 			<div className="w-full max-w-screen-2xl">
 				<div className="bg-gray-800 px-4 py-6 md:flex md:space-x-60 lg:px-10 lg:py-8">
 					<div className="mb-6 flex md:mb-0">
@@ -106,8 +106,8 @@ const Footer = () => {
 									</Link>
 								</li>
 
-								<li className="mb-0">
-									<Link href="#" className="hover:underline">
+								<li className="mb-0 transition ease-in-out delay-150 hover:underline duration-300">
+									<Link href="/contact-us" className="">
 										contact
 									</Link>
 								</li>
@@ -116,9 +116,7 @@ const Footer = () => {
 					</div>
 				</div>
 
-				{/* <hr className="my-6 border-gray-200 lg:my-8" /> */}
-
-				<div className="bg-gray-900 px-4 py-6 sm:flex sm:items-center sm:justify-between lg:px-10 lg:py-8">
+				<div className="bg-gray-900 px-4 py-6 flex flex-col md:flex-row items-center justify-center md:justify-between lg:px-10 lg:py-8">
 					<div className="space-x-3 text-sm">
 						<span className="text-white sm:text-center">
 							Copyright© 2024 company
@@ -133,14 +131,11 @@ const Footer = () => {
 							legacy
 						</span>
 					</div>
-					<div className="mt-4 flex sm:mt-0 sm:justify-center sm:space-x-2">
+					<div className="mt-2 flex justify-center space-x-2 md:mt-0 md:mx-8">
 						<Link href="#" target="_blank" className="text-white">
                             <Icon name="twitter-logo" className="" />
 						</Link>
 						<Link href="#" target="_blank" className="text-white">
-                            <Icon name="linkedin-logo" className="cursor-pointer h-5 w-5 hover:text-gray-500" />
-						</Link>
-						<Link href="#" target="_blank" className="ms-5 text-white">
                             <Icon name="linkedin-logo" className="cursor-pointer h-5 w-5 hover:text-gray-500" />
 						</Link>
 						<Link href="#" target="_blank" className="ms-5 text-white">

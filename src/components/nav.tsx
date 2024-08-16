@@ -56,7 +56,7 @@ const  Nav = ({isScroll}: {isScroll: boolean}) => {
 
       {isNavOpen && 
         ((
-          <div className="flex min-h-screen flex-col text-white items-center justify-center py-24 bg-black gap-y-10 top-0">
+          <div className="flex w-screen min-h-screen flex-col text-white items-center justify-center py-24 bg-black gap-y-10 top-0">
             {links.map((el, i) => (
               <motion.div
                 initial={{ opacity: 0 }}

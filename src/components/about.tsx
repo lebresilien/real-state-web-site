@@ -8,10 +8,10 @@ import { Icon } from "./ui/icons";
 
 const About = ({ advantages, visions }: {advantages: Advantage[], visions: Vision[]}) => {
     return (
-        <section className="bg-white overflow-hidden">
-            <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <section className="bg-white overflow-hidden mx-5 rounded-lg">
+            <div className="container py-10 px-3 mx-0 lg:py-16 lg:px-8 lg:mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-                    <div className="mt-12 md:mt-0" data-aos="fade-up-right">
+                    <div className="mt-12 md:mt-0 order-last md:order-first" data-aos="fade-up-right">
                         <Image  
                             src="https://images.unsplash.com/photo-1531973576160-7125cd663d86"
                             alt="About Us Image" 
@@ -25,7 +25,7 @@ const About = ({ advantages, visions }: {advantages: Advantage[], visions: Visio
                             }}
                         />
                     </div>
-                    <div className="max-w-2xl" data-aos="fade-up-left">
+                    <div className="flex flex-col items-center max-w-2xl order-first md:order-last" data-aos="fade-up-left">
                         <h2 className="text-3xl text-center font-extrabold text-gray-900 uppercase sm:text-4xl">A propos</h2>
                         <p className="mt-4 text-gray-600 text-md lg:text-lg">
                             Le marché immobilier au Cameroun est un véritable labyrinthe semé d&apos;embûches, où chaque 
