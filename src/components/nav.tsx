@@ -36,7 +36,7 @@ const  Nav = ({isScroll}: {isScroll: boolean}) => {
     <>
       <div 
         data-aos={isScroll ? "fade-down" : ""}
-        className={isScroll ? "fixed bg-primary w-full z-50 flex items-center justify-between py-8 px-5": 
+        className={isScroll ? "fixed bg-gray-800 w-full z-50 flex items-center justify-between py-8 px-5": 
                 "fixed copy w-full z-50 flex items-center justify-between py-8 px-5"
         }
       >
@@ -47,7 +47,7 @@ const  Nav = ({isScroll}: {isScroll: boolean}) => {
           </div>
         </section>
         <Link href="/">
-          <span className="text-blue-500 font-bold font-serif text-2xl">E.M.I</span>
+          <span className="text-primary font-bold font-serif text-2xl">E.M.I</span>
         </Link>
         <div ref={scope}>
           <MenuToggle toggle={() => setIsNavOpen(!isNavOpen)} />

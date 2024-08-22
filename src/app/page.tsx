@@ -54,7 +54,7 @@ export default function Home() {
     )
 
   return (
-    <div className="flex h-full flex-col items-center lg:min-h-screen ">
+    <div className="flex h-full flex-col items-center lg:min-h-screen">
 
       <section className="font-serif mb-24 pb-0 w-full flex flex-col justify-center items-center text-center text-white lg:h-screen lg:pb-0 lg:pt-20 lg:pb-24 lg:mb-0">
         <div className="video-docker absolute top-0 left-0 h-[500px] w-full lg:h-full overflow-hidden">

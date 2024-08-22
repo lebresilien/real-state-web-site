@@ -7,7 +7,7 @@ const Footer = () => {
 	return (
 		<footer className="w-full">
 			<div className="w-full max-w-screen-2xl">
-				<div className="bg-gray-800 px-4 py-6 md:flex md:space-x-60 lg:px-10 lg:py-8">
+				<div className="bg-gray-800 px-4 py-6 md:flex md:space-x-60 lg:px-10 lg:py-8" id="footer">
 					<div className="mb-6 flex md:mb-0">
 						<div className="flex flex-col items-center space-y-1 md:space-y-2">
 							<div className="">
@@ -42,27 +42,27 @@ const Footer = () => {
 							</h2>
 							<ul className="text-sm capitalize text-white">
 								<li className="mb-2">
-									<Link href="/" className="hover:underline">
+									<Link href="/">
 										accueil
 									</Link>
 								</li>
 								<li className="mb-2">
-									<Link href="#" className="hover:underline">
+									<Link href="#">
 										services
 									</Link>
 								</li>
 								<li className="mb-2">
-									<Link href="#" className="hover:underline">
+									<Link href="#">
 										blog
 									</Link>
 								</li>
 								<li className="mb-2">
-									<Link href="#" className="hover:underline">
+									<Link href="#">
 										contact
 									</Link>
 								</li>
 								<li>
-									<Link href="#" className="hover:underline">
+									<Link href="#">
 										contact
 									</Link>
 								</li>
@@ -74,17 +74,17 @@ const Footer = () => {
 							</h2>
 							<ul className="text-sm capitalize text-white">
 								<li className="mb-2">
-									<Link href="#" className="hover:underline ">
+									<Link href="#">
 										confidentialité
 									</Link>
 								</li>
 								<li className="mb-2">
-									<Link href="#" className="hover:underline ">
+									<Link href="#">
 										cookies
 									</Link>
 								</li>
 								<li className="mb-0">
-									<Link href="#" className="hover:underline ">
+									<Link href="#">
 										tt
 									</Link>
 								</li>
@@ -96,18 +96,18 @@ const Footer = () => {
 							</h2>
 							<ul className="text-sm capitalize text-white">
 								<li className="mb-2">
-									<Link href="#" className="hover:underline">
+									<Link href="#">
 										centre d&apos;aide
 									</Link>
 								</li>
 								<li className="mb-2">
-									<Link href="#" className="hover:underline">
+									<Link href="#">
 										faq
 									</Link>
 								</li>
 
-								<li className="mb-0 transition ease-in-out delay-150 hover:underline duration-300">
-									<Link href="/contact-us" className="">
+								<li>
+									<Link href="/contact-us">
 										contact
 									</Link>
 								</li>
@@ -131,15 +131,15 @@ const Footer = () => {
 							legacy
 						</span>
 					</div>
-					<div className="mt-2 flex justify-center space-x-2 md:mt-0 md:mx-8">
-						<Link href="#" target="_blank" className="text-white">
-                            <Icon name="twitter-logo" className="" />
+					<div className="mt-2 flex justify-center space-x-3 md:mt-0 md:mx-8">
+						<Link href="#" target="_blank" className="transition duration-500 ease-in-out text-white hover:ease-in hover:text-blue-900">
+                            <Icon name="twitter-logo" />
 						</Link>
-						<Link href="#" target="_blank" className="text-white">
-                            <Icon name="linkedin-logo" className="cursor-pointer h-5 w-5 hover:text-gray-500" />
+						<Link href="#" target="_blank" className="transition duration-500 ease-in-out text-white hover:ease-in hover:text-blue-90e">
+                            <Icon name="linkedin-logo" />
 						</Link>
-						<Link href="#" target="_blank" className="ms-5 text-white">
-                            <Icon name="instagram-logo" className="cursor-pointer h-5 w-5 hover:text-gray-500" />
+						<Link href="#" target="_blank" className="transition duration-500 ease-in-out text-white hover:ease-in hover:text-blue-90">
+                            <Icon name="instagram-logo"/>
 						</Link>
 					</div>
 				</div>

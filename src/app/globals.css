@@ -89,3 +89,29 @@
   background-color: rgba(36, 38, 41, .402);
   box-shadow: 0 1px 0 0 hsla(0, 0%, 100%, .1);
 }
+
+#footer a {
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+}
+
+#footer a:before {
+  content: '';
+  background: rgb(30, 64, 175);
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+#footer a:hover {
+ background-position: 0;
+}
+
+#footer a:hover::before {
+  width:100%;
+}
