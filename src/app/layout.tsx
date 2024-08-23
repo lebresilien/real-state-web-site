@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Template from "@/components/templates/layout";
 import NavigationProvider from "@/context/navigationContext";
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={`${inter.className}`}>
         <NavigationProvider>
           <Template children={children} />
+          <Toaster />
         </NavigationProvider>
       </body>
     </html>

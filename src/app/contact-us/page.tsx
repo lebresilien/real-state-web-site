@@ -44,7 +44,7 @@ export default function Contact() {
           subject: "",
           email: "",
           message: "",
-        },
+        }
     });
 
     const onSubmit = async (contact: z.infer<typeof FormSchema>) => {
@@ -68,18 +68,13 @@ export default function Contact() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            const data = await response.json();
-            console.log(data);
+            // const data = await response.json();
+            form.reset();
             toast({
-                title: "Alert",
-                description: (
-                    <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                        <span className="text-white">Vos informations ont été envoyées</span>
-                    </pre>
-                ),
+                description: "Les informations ont été bien transmises"
             })
         } catch (error) {
-            console.log('errroruuuuuuuuuuu', error);
+            console.log('error', error);
         } finally {
             setIsSubmitting(false);
         }
