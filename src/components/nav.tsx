@@ -56,7 +56,7 @@ const  Nav = ({isScroll}: {isScroll: boolean}) => {
 
       {isNavOpen && 
         ((
-          <div className="flex w-screen min-h-screen flex-col text-white items-center justify-center py-24 bg-black gap-y-10 top-0">
+          <div className="flex w-screen z-40 min-h-screen flex-col text-white items-center justify-center py-24 bg-black gap-y-10 top-0">
             {links.map((el, i) => (
               <motion.div
                 initial={{ opacity: 0 }}
@@ -68,7 +68,7 @@ const  Nav = ({isScroll}: {isScroll: boolean}) => {
                 }}
                 key={i}
               >
-                <Link href={el.href} key={i}>
+                <Link href={el.href} key={i} onClick={() => setIsNavOpen(!isNavOpen)}>
                   <span className="font-bold text-xl lg:text-7xl uppercase">{el.title}</span>
                 </Link>
               </motion.div>

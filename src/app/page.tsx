@@ -66,7 +66,7 @@ export default function Home() {
             ></video>
         </div>
                     
-        <div className="container z-50 space-y-16 mt-40 lg:space-y-0 lg:mt-20">
+        <div className="container z-40 space-y-16 mt-40 lg:space-y-0 lg:mt-20">
           <div className="space-y-2 flex flex-col items-center justify-between">
             <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">like steroids</h1>
             <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">for business</h1>

@@ -1,6 +1,6 @@
 const Path = (props: any) => (
     <path
-      fill="transparent"
+      fill="full"
       strokeWidth="5"
       stroke="white"
       strokeLinecap="round"
