@@ -1,11 +1,90 @@
+"use client";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icons";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+  } from "@/components/ui/form"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { useToast  } from "@/components/ui/use-toast";
+import { useState } from "react";
+
+const FormSchema = z.object({
+    name: z.string().min(3, {
+      message: "Le Nom doit contenir au moins 3 caractères.",
+    }),
+    subject: z.string().min(1, {
+        message: "Le champ subject est obligatoire",
+    }),
+    email: z.string().email(),
+    message: z.string().min(10, {
+        message: "Le message doit contenir au moins 10 caractères.",
+    }), 
+
+})
 
 export default function Contact() {
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { toast } = useToast();
+
+    const form = useForm<z.infer<typeof FormSchema>>({
+        resolver: zodResolver(FormSchema),
+        defaultValues: {
+          name: "",
+          subject: "",
+          email: "",
+          message: "",
+        },
+    });
+
+    const onSubmit = async (contact: z.infer<typeof FormSchema>) => {
+
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/contact`, {
+                method: 'POST',
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: contact.name,
+                    subject: contact.subject,
+                    email: contact.email,
+                    message: contact.message,
+                })
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log(data);
+            toast({
+                title: "Alert",
+                description: (
+                    <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+                        <span className="text-white">Vos informations ont été envoyées</span>
+                    </pre>
+                ),
+            })
+        } catch (error) {
+            console.log('errroruuuuuuuuuuu', error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
+
     return (
         <div className="flex w-full h-full flex-col items-center lg:min-h-screen mt-60">
            
@@ -63,67 +142,105 @@ export default function Contact() {
                             </div>
                         </div>
                     </div>
-                    <form className="md:col-span-8 p-10">
-                        <div className="flex flex-wrap -mx-3 mb-6">
-                            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <Label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    htmlFor="grid-first-name">
-                                    Noms et Prénoms
-                                </Label>
-                                <Input
-                                    className="appearance-none block w-full h-14 bg-gray-100 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
-                                    placeholder="Jhon Doe"
-                                />
-                                {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="md:col-span-8 p-10">
+                            <div className="flex flex-wrap -mx-3 mb-6">
+                                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                    <FormField
+                                        control={form.control}
+                                        name="name"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Noms et prénoms</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                    {...field}
+                                                        className="appearance-none block w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
+                                                        placeholder="Jhon Doe"
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                                <div className="w-full md:w-1/2 px-3">
+                                    <FormField
+                                            control={form.control}
+                                            name="subject"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel>subject</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className="appearance-none block w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
+                                                            placeholder="xxxxxxxxx"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                </div>
                             </div>
-                            <div className="w-full md:w-1/2 px-3">
-                                <Label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    htmlFor="grid-last-name">
-                                    Sujet
-                                </Label>
-                                <Input
-                                    className="appearance-none block w-full h-14 bg-gray-100 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
-                                    placeholder="xxxxxxxxx"
-                                />
+                            <div className="flex flex-wrap -mx-3 mb-6">
+                                <div className="w-full px-3">
+                                    <FormField
+                                        control={form.control}
+                                        name="email"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Email</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                    {...field}
+                                                        className="appearance-none block w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
+                                                        placeholder="********@*****.**"
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex flex-wrap -mx-3 mb-6">
-                            <div className="w-full px-3">
-                                <Label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    htmlFor="grid-password">
-                                    Email
-                                </Label>
-                                <Input
-                                    className="appearance-none block w-full h-14 bg-gray-100 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
-                                    type="email" 
-                                    placeholder="********@*****.**" 
-                                />
-                            </div>
-                        </div>
 
-                        <div className="flex flex-wrap -mx-3 mb-6">
-                            <div className="w-full px-3">
-                                <Label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    htmlFor="grid-password">
-                                    Message
-                                </Label>
-                                <Textarea 
-                                    rows={3}
-                                    placeholder="Entrer votre message"
-                                    className="appearance-none block w-full h-14 bg-gray-100 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
-                                />
+                            <div className="flex flex-wrap -mx-3 mb-6">
+                                <div className="w-full px-3">
+                                    <FormField
+                                        control={form.control}
+                                        name="message"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Message</FormLabel>
+                                                <FormControl>
+                                                    <Textarea
+                                                    {...field}
+                                                        className="appearance-none block w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
+                                                        placeholder="Votre message"
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                                <div className="flex justify-between w-full px-3 mt-5">
+                                    <Button
+                                        className="shadow inline-flex relative gap-x-2 h-10 w-full border-0 bg-primary overflow-hidden transition-all hover:bg-secondary group sm:text-sm lg:h-16"
+                                        type="submit"
+                                        disabled={isSubmitting ? true : false}
+                                    >
+                                        <span className="w-0 h-0 rounded bg-secondary absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
+                                        <span className="text-white sm:text-sm transition-colors duration-300 ease-in-out group-hover:text-white z-10">
+                                            { isSubmitting ? "Envoi..." : "Envoyer" }
+                                        </span>
+                                    </Button>
+                                </div>
                             </div>
-                            <div className="flex justify-between w-full px-3 mt-5">
-                                <Button
-                                    className="shadow inline-flex relative gap-x-2 h-10 w-full border-0 bg-primary overflow-hidden transition-all hover:bg-secondary group sm:text-sm lg:h-16"
-                                    type="submit"
-                                >
-                                    <span className="w-0 h-0 rounded bg-secondary absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
-                                    <span className="text-white sm:text-sm transition-colors duration-300 ease-in-out group-hover:text-white z-10">Envoyer</span>
-                                </Button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </Form>
                 </div>
             </div>
         </div>

@@ -22,3 +22,10 @@ export interface Vision {
     name: string
     description: string
 }
+
+export interface Contact {
+    name: string
+    subject: string
+    email: string
+    message: string
+}
