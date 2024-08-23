@@ -40,7 +40,7 @@ const  Nav = ({isScroll}: {isScroll: boolean}) => {
                 "fixed copy w-full z-50 flex items-center justify-between py-8 px-5"
         }
       >
-        <section className="flex">
+        <section className="flex text-white">
           <div className="flex gap-x-3 items-center cursor-pointer group">
             <Icon name="phone-outline" className="cursor-pointer h-8 w-8 group-hover:animate-bounce transition delay-150 duration-300 ease-in-out" />
             <span className="hidden lg:flex">678-66-08-00</span>

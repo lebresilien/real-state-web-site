@@ -115,3 +115,10 @@
 #footer a:hover::before {
   width:100%;
 }
+
+.background-content {
+  background-image: url("/images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-color: bisque;*/
+}
