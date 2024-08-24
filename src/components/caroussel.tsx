@@ -28,7 +28,7 @@ const Slide = ({ testimonies }: { testimonies: Testimony[] }) => {
                         }),
                     ]}
                     className="w-full min-w-sm"
-                    >
+                >
                         <CarouselContent>
                             {testimonies.map((item, index) => (
                                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
