@@ -1,7 +1,14 @@
+"use client";
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import  Navigation  from 'swiper';
+import { Swiper as SwiperType } from 'swiper';
 
 const Blog = () => {
+
+    const swiperRef = useRef<SwiperType>();
+
     return (
         <section className="bg-gray-50 w-full">
             <div className="mx-auto max-w-[1340px] px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
@@ -18,6 +25,7 @@ const Blog = () => {
 
                         <div className="hidden lg:mt-8 lg:flex lg:gap-4">
                             <button
+                                onClick={() => swiperRef.current?.slidePrev()}
                                 aria-label="Previous slide"
                                 id="keen-slider-previous-desktop"
                                 className="rounded-full border border-rose-600 p-3 text-rose-600 transition hover:bg-rose-600 hover:text-white"
@@ -39,6 +47,7 @@ const Blog = () => {
                             </button>
 
                             <button
+                                onClick={() => swiperRef.current?.slideNext()}
                                 aria-label="Next slide"
                                 id="keen-slider-next-desktop"
                                 className="rounded-full border border-rose-600 p-3 text-rose-600 transition hover:bg-rose-600 hover:text-white"
@@ -62,41 +71,46 @@ const Blog = () => {
                     </div>
 
                     <div className="-mx-6 lg:col-span-2 lg:mx-0">
-                        
-                    <Swiper
-                        spaceBetween={50}
-                        slidesPerView={3}
-                        onSlideChange={() => console.log('slide change')}
-                        onSwiper={(swiper) => console.log(swiper)}
-                        autoplay={{
-                            delay: 100,
-                            disableOnInteraction: false,
-                        }}
-                    >
-                        {Array.from({ length: 10 }).map((_, index) => (
-                            <SwiperSlide key={index}>
-                                <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                                    <img className="w-full" src="/images/card-top.jpg" alt="Sunset in the mountains" />
-                                    <div className="px-6 py-4">
-                                        <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-                                        <p className="text-gray-700 text-base">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                                        </p>
+                        <Swiper
+                            spaceBetween={50}
+                            slidesPerView={3}
+                            onSlideChange={() => console.log('slide change')}
+                            onSwiper={(swiper) => console.log(swiper)}
+                            autoplay={{
+                                delay: 5000,
+                                disableOnInteraction: false,
+                            }}
+                            loop={true}
+                           
+                            onBeforeInit={(swiper) => {
+                                swiperRef.current = swiper;
+                            }}
+                        >
+                            {Array.from({ length: 15 }).map((_, index) => (
+                                <SwiperSlide key={index}>
+                                    <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg">
+                                        <img className="w-full" src="/images/card-top.jpg" alt="Sunset in the mountains" />
+                                        <div className="px-6 py-4">
+                                            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+                                            <p className="text-gray-700 text-base">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                                            </p>
+                                        </div>
+                                        <div className="px-6 pt-4 pb-2">
+                                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+                                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                                        </div>
                                     </div>
-                                    <div className="px-6 pt-4 pb-2">
-                                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                 </div>
 
                 <div className="mt-8 flex justify-center gap-4 lg:hidden">
                     <button
+                        onClick={() => swiperRef.current?.slidePrev()}
                         aria-label="Previous slide"
                         id="keen-slider-previous"
                         className="rounded-full border border-rose-600 p-4 text-rose-600 transition hover:bg-rose-600 hover:text-white"
@@ -113,6 +127,7 @@ const Blog = () => {
                     </button>
 
                     <button
+                        onClick={() => swiperRef.current?.slideNext()}
                         aria-label="Next slide"
                         id="keen-slider-next"
                         className="rounded-full border border-rose-600 p-4 text-rose-600 transition hover:bg-rose-600 hover:text-white"
