@@ -72,16 +72,13 @@ const Blog = () => {
 
                     <div className="-mx-6 lg:col-span-2 lg:mx-0">
                         <Swiper
-                            spaceBetween={50}
+                            spaceBetween={20}
                             slidesPerView={3}
-                            onSlideChange={() => console.log('slide change')}
-                            onSwiper={(swiper) => console.log(swiper)}
                             autoplay={{
                                 delay: 5000,
                                 disableOnInteraction: false,
                             }}
                             loop={true}
-                           
                             onBeforeInit={(swiper) => {
                                 swiperRef.current = swiper;
                             }}
@@ -89,11 +86,11 @@ const Blog = () => {
                             {Array.from({ length: 15 }).map((_, index) => (
                                 <SwiperSlide key={index}>
                                     <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg">
-                                        <img className="w-full" src="/images/card-top.jpg" alt="Sunset in the mountains" />
-                                        <div className="px-6 py-4">
+                                        <img className="transition grayscale w-full ease-out delay-150 hover:ease-in hover:-translate-y-10 hover:scale-150 duration-1000" src="/images/card-top.jpg" alt="Sunset in the mountains" />
+                                        <div className="px-6 py-4 flex flex-col">
                                             <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
                                             <p className="text-gray-700 text-base">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                                                Lorem ipsum dolor sit amet, consectetur 
                                             </p>
                                         </div>
                                         <div className="px-6 pt-4 pb-2">
