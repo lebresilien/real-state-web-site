@@ -57,12 +57,7 @@ const Footer = () => {
 									</Link>
 								</li>
 								<li className="mb-2">
-									<Link href="#">
-										contact
-									</Link>
-								</li>
-								<li>
-									<Link href="#">
+									<Link href="/contact-us">
 										contact
 									</Link>
 								</li>
@@ -81,11 +76,6 @@ const Footer = () => {
 								<li className="mb-2">
 									<Link href="#">
 										cookies
-									</Link>
-								</li>
-								<li className="mb-0">
-									<Link href="#">
-										tt
 									</Link>
 								</li>
 							</ul>
