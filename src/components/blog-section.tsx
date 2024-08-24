@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import  Navigation  from 'swiper';
 import { Swiper as SwiperType } from 'swiper';
+import { Icon } from './ui/icons';
 
 const Blog = () => {
 
@@ -85,18 +86,20 @@ const Blog = () => {
                         >
                             {Array.from({ length: 15 }).map((_, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg">
+                                    <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg pb-5 cursor-pointer">
                                         <img className="transition grayscale w-full ease-out delay-150 hover:ease-in hover:-translate-y-10 hover:scale-150 duration-1000" src="/images/card-top.jpg" alt="Sunset in the mountains" />
-                                        <div className="px-6 py-4 flex flex-col">
-                                            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-                                            <p className="text-gray-700 text-base">
+                                        <div className="px-3 py-4 flex flex-col space-y-3">
+                                            <div className="flex font-bold mb-2">
+                                                <Icon name="avatar" className="text-primary" />
+                                                <span className="uppercase text-gray-700">Tapondjou petito</span>
+                                            </div>
+                                            <p className="text-gray-900 uppercase">
                                                 Lorem ipsum dolor sit amet, consectetur 
                                             </p>
                                         </div>
-                                        <div className="px-6 pt-4 pb-2">
-                                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                                        <div className="flex space-x-2 px-3 text-gray-600">
+                                            <span className="uppercase inline-block">voir plus</span>
+                                            <Icon name="arrow-right" />
                                         </div>
                                     </div>
                                 </SwiperSlide>

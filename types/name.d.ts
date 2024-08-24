@@ -5,6 +5,7 @@ export type IconName =
   | "arrow-left"
   | "arrow-right"
   | "arrow-up"
+  | "avatar"
   | "border-all"
   | "border-style"
   | "current-location-outline"
