@@ -86,10 +86,12 @@ const Blog = () => {
                         >
                             {Array.from({ length: 15 }).map((_, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className="relative max-w-sm bg-white rounded overflow-hidden shadow-lg pb-5 cursor-pointer">
-                                        <img className="object-cover transition grayscale w-full ease-in hover:-translate-y-10 hover:scale-150 duration-1000" src="/images/card-top.jpg" alt="Sunset in the mountains" />
-                                        <div className="absolute inset-0 flex bottom-0 justify-end">
-                                            <h2 className="text-white text-lg font-bold">Get Lost</h2>
+                                    <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg pb-5 cursor-pointer">
+                                        <div className="relative w-full">
+                                            <img className="transition grayscale w-full ease-in hover:-translate-y-10 hover:scale-150 duration-1000" src="/images/card-top.jpg" alt="Sunset in the mountains" />
+                                            <div className="absolute inset-0 flex items-end justify-end">
+                                                <h2 className="bg-primary px-2 py-0.5 text-white text-lg font-bold">30 octobre 2024</h2>
+                                            </div>
                                         </div>
                                         <div className="px-3 py-4 flex flex-col space-y-3">
                                             <div className="flex font-bold mb-2">
