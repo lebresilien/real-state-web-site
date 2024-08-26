@@ -5,13 +5,15 @@ import 'swiper/css';
 import  Navigation  from 'swiper';
 import { Swiper as SwiperType } from 'swiper';
 import { Icon } from './ui/icons';
+import Image from 'next/image';
+import card from "../../public/images/card-top.jpg"
 
 const Blog = () => {
 
     const swiperRef = useRef<SwiperType>();
 
     return (
-        <section className="bg-gray-50 w-full">
+        <section className="bg-gray-50 w-full mt-24">
             <div className="mx-auto max-w-[1340px] px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-center lg:gap-16">
                     <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
@@ -86,13 +88,23 @@ const Blog = () => {
                         >
                             {Array.from({ length: 15 }).map((_, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg pb-5 cursor-pointer">
-                                        <div className="relative w-full">
-                                            <img className="transition grayscale w-full ease-in hover:-translate-y-10 hover:scale-150 duration-1000" src="/images/card-top.jpg" alt="Sunset in the mountains" />
+                                    <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg pb-5">
+                                        <div className="relative">
+                                            <Image
+                                                className="object-cover cursor-pointer transition grayscale w-full ease-in hover:-translate-y-10 hover:scale-150 duration-1000"
+                                                src={card}
+                                                alt="Sunset in the mountains"
+                                                sizes="100vw"
+                                                style={{
+                                                    width: '100%',
+                                                    height: 'auto',
+                                                }}
+                                            />
                                             <div className="absolute inset-0 flex items-end justify-end">
-                                                <h2 className="bg-primary px-2 py-0.5 text-white text-lg font-bold">30 octobre 2024</h2>
+                                                <h2 className="z-40 bg-primary px-2 py-0.5 text-white text-lg font-bold">30 octobre 2024</h2>
                                             </div>
                                         </div>
+                
                                         <div className="px-3 py-4 flex flex-col space-y-3">
                                             <div className="flex font-bold mb-2">
                                                 <Icon name="avatar" className="text-primary" />

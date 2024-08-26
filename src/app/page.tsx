@@ -84,7 +84,7 @@ export default function Home() {
   
       <About advantages={data ? data.advantages : []} visions={data ? data.visions : []} />
 
-      <Slide testimonies={data ? data.testimonies : []} />
+      {/* <Slide testimonies={data ? data.testimonies : []} /> */}
 
       <Blog />  
        
