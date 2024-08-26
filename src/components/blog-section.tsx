@@ -86,20 +86,23 @@ const Blog = () => {
                         >
                             {Array.from({ length: 15 }).map((_, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg pb-5 cursor-pointer">
-                                        <img className="transition grayscale w-full ease-out delay-150 hover:ease-in hover:-translate-y-10 hover:scale-150 duration-1000" src="/images/card-top.jpg" alt="Sunset in the mountains" />
+                                    <div className="relative max-w-sm bg-white rounded overflow-hidden shadow-lg pb-5 cursor-pointer">
+                                        <img className="object-cover transition grayscale w-full ease-in hover:-translate-y-10 hover:scale-150 duration-1000" src="/images/card-top.jpg" alt="Sunset in the mountains" />
+                                        <div className="absolute inset-0 flex bottom-0 justify-end">
+                                            <h2 className="text-white text-lg font-bold">Get Lost</h2>
+                                        </div>
                                         <div className="px-3 py-4 flex flex-col space-y-3">
                                             <div className="flex font-bold mb-2">
                                                 <Icon name="avatar" className="text-primary" />
-                                                <span className="uppercase text-gray-700">Tapondjou petito</span>
+                                                <span className="uppercase text-gray-700">Tapondjou</span>
                                             </div>
                                             <p className="text-gray-900 uppercase">
                                                 Lorem ipsum dolor sit amet, consectetur 
                                             </p>
                                         </div>
-                                        <div className="flex space-x-2 px-3 text-gray-600">
-                                            <span className="uppercase inline-block">voir plus</span>
-                                            <Icon name="arrow-right" />
+                                        <div className="flex space-x-2 px-3 text-gray-600 group hover:text-primary">
+                                            <span className="uppercase inline-block">voir see</span>
+                                            <Icon name="arrow-right" className="transition group-hover:translate-x-1 duration-500 delay-150" />
                                         </div>
                                     </div>
                                 </SwiperSlide>
