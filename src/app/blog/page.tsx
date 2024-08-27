@@ -1,12 +1,13 @@
 
 "use client";
 import { useEffect, useState } from 'react';
-import { type Blog } from '../../../types';
+import { type Blogs } from '../../../types';
 import BlogItem from '@/components/blog';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 
 export default function Blog() {
 
-    const [data, setData] = useState<Blog[]>([]);
+    const [data, setData] = useState<Blogs[] | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -18,7 +19,8 @@ export default function Blog() {
             }
             const res = await response.json();
             setData(res);
-            console.log('ye', res)
+            console.log('ye', res);
+            console.log('data', data)
           } catch (error) {
             console.log('errror', error);
           } finally {
@@ -41,16 +43,34 @@ export default function Blog() {
 
     return (
         <div className="flex w-full h-full flex-col items-center justify-center lg:min-h-screen mt-60">
-            {data?.map((item, index) => (
-                <BlogItem
-                    key={index}
-                    title={item.title}
-                    slug={item.slug}
-                    user={item.user}
-                    createdAt={item.createdAt}
-                    cover={item.cover}
-                />
-            ))}
+            
+            <section className="w-full text-white flex flex-col items-center justify-center background-content h-[500px] -mt-60">
+                <h1 className="text-3xl text-primary sm:text-5xl leading-normal uppercase font-extrabold tracking-tight text-white">Blog</h1>
+                <Breadcrumb className="mt-3 font-semibold">
+                    <BreadcrumbList>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink className="text-white hover:text-primary" href="/">Accueil</BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator className="text-white" />
+                        <BreadcrumbItem className="text-white">BLOG</BreadcrumbItem>
+                    </BreadcrumbList>
+                </Breadcrumb>
+            </section>
+
+            <div className="w-full my-24">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 space-y-3">
+                    {data?.map((item, index) => (
+                        <BlogItem
+                            key={index}
+                            title={item.title}
+                            slug={item.slug}
+                            user={item.user}
+                            createdAt={item.createdAt}
+                            cover={item.cover}
+                        />
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }

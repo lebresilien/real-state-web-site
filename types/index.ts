@@ -30,7 +30,7 @@ export interface Contact {
     message: string
 }
 
-export interface Blog {
+export interface Blogs {
     title: string
     slug: string
     cover: string
