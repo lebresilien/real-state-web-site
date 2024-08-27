@@ -52,7 +52,7 @@ const Footer = () => {
 									</Link>
 								</li>
 								<li className="mb-2">
-									<Link href="#">
+									<Link href="/blog">
 										blog
 									</Link>
 								</li>

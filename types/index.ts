@@ -34,8 +34,9 @@ export interface Blog {
     title: string
     slug: string
     cover: string
-    content: string
-    category: string
-    tags: string[],
-    user: string
+    content?: string
+    category?: string
+    tags?: string[],
+    user: string,
+    createdAt: string
 }

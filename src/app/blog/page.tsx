@@ -2,9 +2,11 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { type Blog } from '../../../types';
+import BlogItem from '@/components/blog';
+
 export default function Blog() {
 
-    const [data, setData] = useState<Blog | null>(null);
+    const [data, setData] = useState<Blog[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -38,8 +40,17 @@ export default function Blog() {
     )
 
     return (
-        <div className="flex w-full h-full flex-col items-center lg:min-h-screen mt-60">
-            welcome to blog content
+        <div className="flex w-full h-full flex-col items-center justify-center lg:min-h-screen mt-60">
+            {data?.map((item, index) => (
+                <BlogItem
+                    key={index}
+                    title={item.title}
+                    slug={item.slug}
+                    user={item.user}
+                    createdAt={item.createdAt}
+                    cover={item.cover}
+                />
+            ))}
         </div>
     )
 }
