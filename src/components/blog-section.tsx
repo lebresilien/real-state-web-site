@@ -1,17 +1,41 @@
 "use client";
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import  Navigation  from 'swiper';
 import { Swiper as SwiperType } from 'swiper';
 import { Icon } from './ui/icons';
 import Image from 'next/image';
 import card from "../../public/images/card-top.jpg"
 import Link from 'next/link';
+import { Button } from './ui/button';
+
+function getWindowSize() {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+}
 
 const Blog = () => {
 
     const swiperRef = useRef<SwiperType>();
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+
+    useEffect(() => {
+        function handleWindowResize() {
+          setWindowSize(getWindowSize());
+        }
+    
+        window.addEventListener('resize', handleWindowResize);
+    
+        return () => {
+          window.removeEventListener('resize', handleWindowResize);
+        };
+      }, []);
+
+      const sizeSwipper = (): number => {
+        if(windowSize.innerWidth <= 640) return 1
+        else if(windowSize.innerWidth > 640 && windowSize.innerWidth <= 768) return 2
+        else return 3
+      }
 
     return (
         <section className="bg-gray-50 w-full mt-24">
@@ -28,56 +52,28 @@ const Blog = () => {
                         </p>
 
                         <div className="hidden lg:mt-8 lg:flex lg:gap-4">
-                            <button
+                            <Button
+                                variant="outline"
                                 onClick={() => swiperRef.current?.slidePrev()}
-                                aria-label="Previous slide"
-                                id="keen-slider-previous-desktop"
-                                className="rounded-full border border-primary p-3 text-primary transition hover:bg-primary hover:text-white"
+                                className="rounded-full border border-primary p-3 h-12 w-12 text-primary transition hover:bg-primary hover:text-white"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    className="size-5 rtl:rotate-180"
-                                >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M15.75 19.5L8.25 12l7.5-7.5"
-                                />
-                                </svg>
-                            </button>
+                               <Icon name="arrow-left" />
+                            </Button>
 
-                            <button
+                            <Button
+                                variant="outline"
                                 onClick={() => swiperRef.current?.slideNext()}
-                                aria-label="Next slide"
-                                id="keen-slider-next-desktop"
-                                className="rounded-full border border-primary p-3 text-primary transition hover:bg-primary hover:text-white"
+                                className="rounded-full border border-primary p-3 text-primary h-12 w-12 transition hover:bg-primary hover:text-white"
                             >
-                                <svg
-                                    className="size-5 rtl:rotate-180"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                <path
-                                    d="M9 5l7 7-7 7"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                />
-                                </svg>
-                            </button>
+                               <Icon name="arrow-right" />
+                            </Button>
                         </div>
                     </div>
 
-                    <div className="-mx-6 lg:col-span-2 lg:mx-0">
+                    <div className="-ml-6 lg:col-span-2 lg:mx-0">
                         <Swiper
-                            spaceBetween={20}
-                            slidesPerView={3}
+                            spaceBetween={10}
+                            slidesPerView={sizeSwipper()}
                             autoplay={{
                                 delay: 5000,
                                 disableOnInteraction: false,
@@ -132,42 +128,28 @@ const Blog = () => {
                             ))}
                         </Swiper>
                     </div>
+
+                 
+
+                    
                 </div>
 
                 <div className="mt-8 flex justify-center gap-4 lg:hidden">
-                    <button
+                    <Button
+                        variant="outline"
                         onClick={() => swiperRef.current?.slidePrev()}
-                        aria-label="Previous slide"
-                        id="keen-slider-previous"
-                        className="rounded-full border border-primary p-4 text-primary transition hover:bg-primary hover:text-white"
+                        className="rounded-full border border-primary p-4 h-12 w-12 text-primary transition hover:bg-primary hover:text-white"
                     >
-                        <svg
-                            className="size-5 -rotate-180 transform"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                        </svg>
-                    </button>
+                        <Icon name="arrow-left" />
+                    </Button>
 
-                    <button
+                    <Button
+                        variant="outline"
                         onClick={() => swiperRef.current?.slideNext()}
-                        aria-label="Next slide"
-                        id="keen-slider-next"
-                        className="rounded-full border border-primary p-4 text-primary transition hover:bg-primary hover:text-white"
+                        className="rounded-full border border-primary p-4 h-12 w-12 text-primary transition hover:bg-primary hover:text-white"
                     >
-                        <svg
-                            className="size-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                        </svg>
-                    </button>
+                        <Icon name="arrow-right" />
+                    </Button>
                 </div>
             </div>
         </section>
