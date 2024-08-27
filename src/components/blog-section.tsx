@@ -7,6 +7,7 @@ import { Swiper as SwiperType } from 'swiper';
 import { Icon } from './ui/icons';
 import Image from 'next/image';
 import card from "../../public/images/card-top.jpg"
+import Link from 'next/link';
 
 const Blog = () => {
 
@@ -31,15 +32,15 @@ const Blog = () => {
                                 onClick={() => swiperRef.current?.slidePrev()}
                                 aria-label="Previous slide"
                                 id="keen-slider-previous-desktop"
-                                className="rounded-full border border-rose-600 p-3 text-rose-600 transition hover:bg-rose-600 hover:text-white"
+                                className="rounded-full border border-primary p-3 text-primary transition hover:bg-primary hover:text-white"
                             >
                                 <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                className="size-5 rtl:rotate-180"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    className="size-5 rtl:rotate-180"
                                 >
                                 <path
                                     stroke-linecap="round"
@@ -53,14 +54,14 @@ const Blog = () => {
                                 onClick={() => swiperRef.current?.slideNext()}
                                 aria-label="Next slide"
                                 id="keen-slider-next-desktop"
-                                className="rounded-full border border-rose-600 p-3 text-rose-600 transition hover:bg-rose-600 hover:text-white"
+                                className="rounded-full border border-primary p-3 text-primary transition hover:bg-primary hover:text-white"
                             >
                                 <svg
-                                className="size-5 rtl:rotate-180"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
+                                    className="size-5 rtl:rotate-180"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
                                 >
                                 <path
                                     d="M9 5l7 7-7 7"
@@ -89,35 +90,43 @@ const Blog = () => {
                             {Array.from({ length: 15 }).map((_, index) => (
                                 <SwiperSlide key={index}>
                                     <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg pb-5">
-                                        <div className="relative">
-                                            <Image
-                                                className="object-cover cursor-pointer transition grayscale w-full ease-in hover:-translate-y-10 hover:scale-150 duration-1000"
-                                                src={card}
-                                                alt="Sunset in the mountains"
-                                                sizes="100vw"
-                                                style={{
-                                                    width: '100%',
-                                                    height: 'auto',
-                                                }}
-                                            />
+                                        <div className="relative cursor-pointer group w-full">
+                                            <Link href="#">
+                                                <Image
+                                                    className="grayscale transition ease-in group-hover:-translate-y-10 group-hover:scale-150 duration-1000"
+                                                    src={card}
+                                                    alt="Sunset in the mountains"
+                                                    sizes="100vw"
+                                                    style={{
+                                                        width: '100%',
+                                                        height: 'auto',
+                                                    }}
+                                                />
+                                            </Link>
                                             <div className="absolute inset-0 flex items-end justify-end">
-                                                <h2 className="z-40 bg-primary px-2 py-0.5 text-white text-lg font-bold">30 octobre 2024</h2>
+                                                <h2 className="text-center bg-primary px-2 py-1 text-white text-sm font-bold">30 octobre 2024</h2>
                                             </div>
                                         </div>
                 
                                         <div className="px-3 py-4 flex flex-col space-y-3">
-                                            <div className="flex font-bold mb-2">
-                                                <Icon name="avatar" className="text-primary" />
-                                                <span className="uppercase text-gray-700">Tapondjou</span>
+                                            <Link href={"#"} className="">
+                                                <div className="flex font-bold mb-2">
+                                                    <Icon name="avatar" className="text-primary hover:text-primary" />
+                                                    <span className="uppercase text-sm text-gray-500 hover:text-primary">Tapondjou</span>
+                                                </div>
+                                            </Link>
+                                            <Link href={"#"} className="block">
+                                                <p className="text-gray-900 font-bold uppercase hover:text-primary">
+                                                    Lorem ipsum dolor sit amet, consectetur 
+                                                </p>
+                                            </Link>
+                                        </div>
+                                        <Link href={"#"} className="block">
+                                            <div className="flex space-x-2 px-3 text-gray-600 group hover:text-primary">
+                                                <span className="inline-block text-sm">Voir plus</span>
+                                                <Icon name="arrow-right" className="transition group-hover:translate-x-1 duration-500 delay-150" />
                                             </div>
-                                            <p className="text-gray-900 uppercase">
-                                                Lorem ipsum dolor sit amet, consectetur 
-                                            </p>
-                                        </div>
-                                        <div className="flex space-x-2 px-3 text-gray-600 group hover:text-primary">
-                                            <span className="uppercase inline-block">voir see</span>
-                                            <Icon name="arrow-right" className="transition group-hover:translate-x-1 duration-500 delay-150" />
-                                        </div>
+                                        </Link>
                                     </div>
                                 </SwiperSlide>
                             ))}
@@ -130,16 +139,16 @@ const Blog = () => {
                         onClick={() => swiperRef.current?.slidePrev()}
                         aria-label="Previous slide"
                         id="keen-slider-previous"
-                        className="rounded-full border border-rose-600 p-4 text-rose-600 transition hover:bg-rose-600 hover:text-white"
+                        className="rounded-full border border-primary p-4 text-primary transition hover:bg-primary hover:text-white"
                     >
                         <svg
-                        className="size-5 -rotate-180 transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+                            className="size-5 -rotate-180 transform"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
                         >
-                        <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                            <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
                         </svg>
                     </button>
 
@@ -147,16 +156,16 @@ const Blog = () => {
                         onClick={() => swiperRef.current?.slideNext()}
                         aria-label="Next slide"
                         id="keen-slider-next"
-                        className="rounded-full border border-rose-600 p-4 text-rose-600 transition hover:bg-rose-600 hover:text-white"
+                        className="rounded-full border border-primary p-4 text-primary transition hover:bg-primary hover:text-white"
                     >
                         <svg
-                        className="size-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+                            className="size-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
                         >
-                        <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                            <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
                         </svg>
                     </button>
                 </div>
