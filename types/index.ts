@@ -29,3 +29,13 @@ export interface Contact {
     email: string
     message: string
 }
+
+export interface Blog {
+    title: string
+    slug: string
+    cover: string
+    content: string
+    category: string
+    tags: string[],
+    user: string
+}

@@ -1,17 +1,9 @@
 "use client";
-import Image from "next/image";
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import InputButton from "@/components/input-button";
 import Feature from "@/components/features";
 import About from "@/components/about";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import Nav from "@/components/nav";
-import Footer from "@/components/footer";
-import { NavigationContext } from "@/context/navigationContext";
 import { Advantage, Service, Testimony, Vision } from "../../types";
-import { Icon } from "@/components/ui/icons";
-import Slide from "@/components/caroussel";
 import Blog from "@/components/blog-section";
 
 interface Data {
@@ -23,8 +15,8 @@ interface Data {
 export default function Home() {
 
     const [data, setData] = useState<Data | null>(null);
-
     const [loading, setLoading] = useState(true);
+    
      useEffect(() => {
       const fetchUsers = async () => {
         try {

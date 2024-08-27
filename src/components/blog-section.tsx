@@ -33,7 +33,7 @@ const Blog = () => {
 
       const sizeSwipper = (): number => {
         if(windowSize.innerWidth <= 640) return 1
-        else if(windowSize.innerWidth > 640 && windowSize.innerWidth <= 768) return 2
+        else if(windowSize.innerWidth > 640 && windowSize.innerWidth <= 1024) return 2
         else return 3
       }
 
@@ -70,7 +70,7 @@ const Blog = () => {
                         </div>
                     </div>
 
-                    <div className="-ml-6 lg:col-span-2 lg:mx-0">
+                    <div className="ml-5 lg:col-span-2 sm:mx-0">
                         <Swiper
                             spaceBetween={10}
                             slidesPerView={sizeSwipper()}
@@ -82,6 +82,7 @@ const Blog = () => {
                             onBeforeInit={(swiper) => {
                                 swiperRef.current = swiper;
                             }}
+                            className="flex items-center justify-center"
                         >
                             {Array.from({ length: 15 }).map((_, index) => (
                                 <SwiperSlide key={index}>
