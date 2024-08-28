@@ -4,9 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Swiper as SwiperType } from 'swiper';
 import { Icon } from './ui/icons';
-import Image from 'next/image';
-import card from "../../public/images/card-top.jpg"
-import Link from 'next/link';
 import { Button } from './ui/button';
 import { Blogs } from '../../types';
 import BlogItem from './blog';
