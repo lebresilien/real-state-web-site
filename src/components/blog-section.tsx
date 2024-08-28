@@ -36,7 +36,7 @@ const Blog = ({ blogs }: { blogs: Blogs[] }) => {
       const sizeSwipper = (): number => {
         if(windowSize.innerWidth <= 640) return 1
         else if(windowSize.innerWidth > 640 && windowSize.innerWidth <= 1024) return 2
-        else return 3
+        else return 2
       }
 
     return (
@@ -84,7 +84,7 @@ const Blog = ({ blogs }: { blogs: Blogs[] }) => {
                             onBeforeInit={(swiper) => {
                                 swiperRef.current = swiper;
                             }}
-                            className="flex items-center justify-center"
+                            className=""
                         >
                             {blogs.map((item, index) => (
                                 <SwiperSlide key={index}>
