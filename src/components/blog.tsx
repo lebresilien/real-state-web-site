@@ -13,15 +13,15 @@ const BlogItem = ({
     tags  
     }: Blogs) => {
         return ( 
-            <div className="w-1/3 bg-white rounded overflow-hidden shadow-lg pb-5">
+            <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg pb-5">
                 <div className="relative cursor-pointer group w-full">
-                    <Link href="#">
+                    <Link href={slug}>
                         <Image
                             className="grayscale transition ease-in group-hover:-translate-y-10 group-hover:scale-150 duration-1000"
                             src={cover}
                             alt={title}
-                            
-                            fill
+                            width={400}
+                            height={50}
                         />
                     </Link>
                     <div className="absolute inset-0 flex items-end justify-end">
@@ -31,7 +31,7 @@ const BlogItem = ({
 
                 <div className="px-3 py-4 flex flex-col space-y-3">
                     <Link href={slug}>
-                        <div className="flex font-bold mb-2">
+                        <div className="flex font-bold mb-2 space-x-1">
                             <Icon name="avatar" className="text-primary hover:text-primary" />
                             <span className="uppercase text-sm text-gray-500 hover:text-primary">{user}</span>
                         </div>

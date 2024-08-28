@@ -8,13 +8,15 @@ import Image from 'next/image';
 import card from "../../public/images/card-top.jpg"
 import Link from 'next/link';
 import { Button } from './ui/button';
+import { Blogs } from '../../types';
+import BlogItem from './blog';
 
 function getWindowSize() {
     const { innerWidth, innerHeight } = window;
     return { innerWidth, innerHeight };
 }
 
-const Blog = () => {
+const Blog = ({ blogs }: { blogs: Blogs[] }) => {
 
     const swiperRef = useRef<SwiperType>();
     const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -84,55 +86,20 @@ const Blog = () => {
                             }}
                             className="flex items-center justify-center"
                         >
-                            {Array.from({ length: 15 }).map((_, index) => (
+                            {blogs.map((item, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className="max-w-sm bg-white rounded overflow-hidden shadow-lg pb-5">
-                                        <div className="relative cursor-pointer group w-full">
-                                            <Link href="#">
-                                                <Image
-                                                    className="grayscale transition ease-in group-hover:-translate-y-10 group-hover:scale-150 duration-1000"
-                                                    src={card}
-                                                    alt="Sunset in the mountains"
-                                                    sizes="100vw"
-                                                    style={{
-                                                        width: '100%',
-                                                        height: 'auto',
-                                                    }}
-                                                />
-                                            </Link>
-                                            <div className="absolute inset-0 flex items-end justify-end">
-                                                <h2 className="text-center bg-primary px-2 py-1 text-white text-sm font-bold">30 octobre 2024</h2>
-                                            </div>
-                                        </div>
-                
-                                        <div className="px-3 py-4 flex flex-col space-y-3">
-                                            <Link href={"#"} className="">
-                                                <div className="flex font-bold mb-2">
-                                                    <Icon name="avatar" className="text-primary hover:text-primary" />
-                                                    <span className="uppercase text-sm text-gray-500 hover:text-primary">Tapondjou</span>
-                                                </div>
-                                            </Link>
-                                            <Link href={"#"} className="block">
-                                                <p className="text-gray-900 font-bold uppercase hover:text-primary">
-                                                    Lorem ipsum dolor sit amet, consectetur 
-                                                </p>
-                                            </Link>
-                                        </div>
-                                        <Link href={"#"} className="block">
-                                            <div className="flex space-x-2 px-3 text-gray-600 group hover:text-primary">
-                                                <span className="inline-block text-sm">Voir plus</span>
-                                                <Icon name="arrow-right" className="transition group-hover:translate-x-1 duration-500 delay-150" />
-                                            </div>
-                                        </Link>
-                                    </div>
+                                    <BlogItem
+                                        key={index}
+                                        title={item.title}
+                                        slug={item.slug}
+                                        user={item.user}
+                                        createdAt={item.createdAt}
+                                        cover={item.cover}
+                                    />
                                 </SwiperSlide>
                             ))}
                         </Swiper>
                     </div>
-
-                 
-
-                    
                 </div>
 
                 <div className="mt-8 flex justify-center gap-4 lg:hidden">

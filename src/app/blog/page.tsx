@@ -19,8 +19,6 @@ export default function Blog() {
             }
             const res = await response.json();
             setData(res);
-            console.log('ye', res);
-            console.log('data', data)
           } catch (error) {
             console.log('errror', error);
           } finally {
@@ -57,8 +55,8 @@ export default function Blog() {
                 </Breadcrumb>
             </section>
 
-            <div className="w-full my-24">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 space-y-3">
+            <div className="w-full my-24 flex justify-center">
+                <div className="grid grid-cols-1 space-y-5 sm:space-y-0 sm:space-x-3 sm:grid-cols-2 md:grid-cols-3">
                     {data?.map((item, index) => (
                         <BlogItem
                             key={index}

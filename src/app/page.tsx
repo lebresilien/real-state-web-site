@@ -3,20 +3,21 @@ import { useEffect, useState } from 'react';
 import InputButton from "@/components/input-button";
 import Feature from "@/components/features";
 import About from "@/components/about";
-import { Advantage, Service, Testimony, Vision } from "../../types";
+import { Advantage, Blogs, Service, Testimony, Vision } from "../../types";
 import Blog from "@/components/blog-section";
 
 interface Data {
   services: Service[]
   testimonies: Testimony[]
   advantages: Advantage[]
-  visions: Vision[]
+  visions: Vision[],
+  blogs: Blogs[]
 }
 export default function Home() {
 
     const [data, setData] = useState<Data | null>(null);
     const [loading, setLoading] = useState(true);
-    
+
      useEffect(() => {
       const fetchUsers = async () => {
         try {
@@ -78,7 +79,7 @@ export default function Home() {
 
       {/* <Slide testimonies={data ? data.testimonies : []} /> */}
 
-      <Blog />  
+      <Blog blogs={data ? data.blogs : []} />  
        
     </div>
   );
