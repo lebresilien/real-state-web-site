@@ -9,7 +9,7 @@ const nextConfig = {
           },
           {
             protocol: 'https',
-            hostname: 'etsmanagementimmo.com'
+            hostname: 'backend.etsmanagementimmo.com'
           },
         ],
     },
