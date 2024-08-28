@@ -35,7 +35,7 @@ const Blog = ({ blogs }: { blogs: Blogs[] }) => {
 
       const sizeSwipper = (): number => {
         if(windowSize.innerWidth <= 640) return 1
-        else if(windowSize.innerWidth > 640 && windowSize.innerWidth <= 1024) return 2
+        //else if(windowSize.innerWidth > 640 && windowSize.innerWidth <= 1024) return 2
         else return 2
       }
 
