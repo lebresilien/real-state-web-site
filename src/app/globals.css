@@ -122,3 +122,12 @@
   background-size: cover;
   /*background-color: bisque;*/
 }
+
+::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
+  color: red;
+}

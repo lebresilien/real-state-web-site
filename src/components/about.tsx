@@ -14,7 +14,7 @@ const About = ({ advantages, visions }: {advantages: Advantage[], visions: Visio
                     <div className="mt-12 md:mt-0 order-last md:order-first" data-aos="fade-up-right">
                         <Image  
                             src="https://images.unsplash.com/photo-1531973576160-7125cd663d86"
-                            alt="About Us Image" 
+                            alt="A propos de Ets Management Immo" 
                             className="object-cover rounded-lg shadow-md"
                             sizes="100vw"
                             width={50}

@@ -13,6 +13,7 @@ export type IconName =
   | "file-phone-outline"
   | "instagram-logo"
   | "linkedin-logo"
+  | "magnifying-glass"
   | "mail-outline"
   | "phone-filled"
   | "phone-outline"
