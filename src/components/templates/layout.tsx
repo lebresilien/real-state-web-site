@@ -48,7 +48,7 @@ export default function Template({
                 {children}
                 <Footer />
                 <div className="flex fixed bottom-20 right-3 hover:-translate-y-2 duration-300 z-50">
-                    <Link href="https://api.whatsapp.com/send?phone=23778660800" target="_blank">
+                    <Link href="https://api.whatsapp.com/send?phone=971588417693" target="_blank">
                         <Image 
                             src="/images/whatsapp.svg" 
                             alt="Watsapp logo"
