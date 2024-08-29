@@ -1,10 +1,17 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import Image from "next/image";
+import { Blogs } from "../../../../types";
+import marked from 'marked';
+import htmlParser from 'html-react-parser';
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: { slug: string } }) {
+
+    let res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blog/${params.slug}`, { next: { revalidate: 10 } });
+    let data = await res.json();
+
     return (
         <div className="flex w-full h-full flex-col items-center justify-center lg:min-h-screen">
             
@@ -27,7 +34,36 @@ export default function Page({ params }: { params: { slug: string } }) {
 
             <div className="container h-full my-24 flex flex-col md:flex-row md:space-x-3">
                 
-                <div className="bg-yellow-500 w-full p-6 flex flex-col items-center justify-center md:w-3/4 md:p-10">01</div>
+                <div className="w-full p-6 space-y-6 flex flex-col md:w-3/4 md:p-10">
+                    
+                    <div className="relative cursor-pointer group h-96">
+                        <Image
+                                className="grayscale transition ease-in group-hover:-translate-y-2 group-hover:scale-25 duration-1000"
+                                src={data.item.cover}
+                                alt={data.item.title}
+                                layout="fill"
+                                objectFit="cover"
+                                quality={100}
+                        />
+                        <div className="absolute h-full inset-0 flex items-end justify-end">
+                            <h2 className="text-center bg-primary px-2 py-1 text-white text-sm font-bold">{data.item.createdAt}</h2>
+                        </div>
+                    </div>
+
+                    <a href="#" className="block capitalize flex flex-row items-center p-3 space-x-2 group">
+                        <Icon name="avatar" className="text-primary" />
+                        <span className="text-gray-700 font-bold text-sm uppercase group-hover:text-primary">{data.item.user}</span>
+                    </a>
+
+                    <div>
+                        <h1 className="text-xl font-bold uppercase tracking-wide leading-6 md:text-2xl hover:text-primary hover:font-extrabold">{data.item.title}</h1>
+                    </div>
+
+                    <p className="overflow-hidden">
+                       {htmlParser(data.item.content)}
+                    </p>
+
+                </div>
                     
                 <div className="w-full py-6 space-y-6 flex flex-col md:py-10 md:w-1/4">
                     
@@ -37,15 +73,15 @@ export default function Page({ params }: { params: { slug: string } }) {
                     </div>
 
                     <div className="py-5 flex flex-col w-full h-full bg-gray-200 max-w-sm items-center px-10">
-                        {Array.from([8, 5, 8]).map((_, index) => (
+                        {data.blogs.map((item: Blogs, index: number) => (
                             <div className="flex items-center shadow-none md:max-w-xl" key={index}>
-                                <img className="object-cover h-14 w-14" src="/images/emi.png" alt="" />
+                                <img className="object-cover h-14 w-14" src={item.cover} alt={item.title} />
                                 <div className="flex flex-col justify-between p-4 leading-normal">
-                                    <a href="#" className="block flex font-bold mb-2 space-x-1 group">
+                                    <a href={`blog/${params.slug}`} className="block flex font-bold mb-2 space-x-1 group">
                                         <Icon name="avatar" className="text-primary" />
-                                        <span className="text-sm text-gray-500 group-hover:text-primary">user</span>
+                                        <span className="text-sm text-gray-500 group-hover:text-primary">{item.user}</span>
                                     </a>
-                                    <p className="mb-3 font-normal text-gray-700 hover:text-primary">Here are the je cameroun eggs sgsgs sgsgs h hs shshsgsg.</p>
+                                    <p className="mb-3 font-normal text-gray-700 hover:text-primary">{item.title}</p>
                                 </div>
                             </div>
                         ))}
@@ -54,9 +90,9 @@ export default function Page({ params }: { params: { slug: string } }) {
                     <div className="py-5 flex flex-col w-full h-full bg-gray-200 max-w-sm justify-center items-center px-10">
                         <h5 className="text-lg uppercase font-bold text-gray-950 md:text-xl">categories</h5>
                         <div className="flex flex-col space-y-3 mt-5 w-full">
-                            {Array.from([8, 5, 8,1, 5, 8, 8,]).map((_, index) => (
+                            {data.categories.map((value: string, index: number) => (
                                 <Link href="#" key={index} className="block capitalize flex justify-between items-center p-3 group hover:bg-white">
-                                    <span className="text-gray-700">locaation</span>
+                                    <span className="text-gray-700">{value}</span>
                                     <Icon name="arrow-right" className="hidden text-primary group-hover:block" />
                                 </Link>
                             ))}
@@ -66,9 +102,9 @@ export default function Page({ params }: { params: { slug: string } }) {
                     <div className="py-5 flex flex-col w-full h-full bg-gray-200 max-w-sm justify-center items-center px-10">
                         <h5 className="text-lg uppercase font-bold text-gray-950 md:text-xl">Tags</h5>
                         <div className="flex flex-wrap gap-1 mt-5 w-full">
-                            {Array.from([8, 5, 8,1, 5, 8, 8,]).map((_, index) => (
+                            {data.tags.map((value: string, index: number) => (
                                 <Link href="#" key={index} className="text-gray-700 capitalize py-1 px-3 bg-white hover:text-white hover:bg-primary">
-                                    <span className="">duplex</span>
+                                    <span className="">{value}</span>
                                 </Link>
                             ))}
                         </div>
