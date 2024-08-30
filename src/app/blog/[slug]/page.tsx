@@ -87,9 +87,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
                         ))}
                     </div>
 
-                    <div className="py-5 flex flex-col w-full h-full bg-gray-200 max-w-sm justify-center items-center px-10">
+                    <div className="py-5 flex flex-col w-full h-full bg-gray-200 max-w-sm items-center px-10">
                         <h5 className="text-lg uppercase font-bold text-gray-950 md:text-xl">categories</h5>
-                        <div className="flex flex-col space-y-3 mt-5 w-full">
+                        <div className="flex flex-col space-y-1 mt-5 w-full">
                             {data.categories.map((value: string, index: number) => (
                                 <Link href="#" key={index} className="block capitalize flex justify-between items-center p-3 group hover:bg-white">
                                     <span className="text-gray-700">{value}</span>
@@ -99,7 +99,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                         </div>
                     </div>
 
-                    <div className="py-5 flex flex-col w-full h-full bg-gray-200 max-w-sm justify-center items-center px-10">
+                    <div className="py-5 flex flex-col w-full h-full bg-gray-200 max-w-sm items-center px-10">
                         <h5 className="text-lg uppercase font-bold text-gray-950 md:text-xl">Tags</h5>
                         <div className="flex flex-wrap gap-1 mt-5 w-full">
                             {data.tags.map((value: string, index: number) => (
