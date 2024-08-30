@@ -8,7 +8,6 @@ import Nav from "@/components/nav";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Icon } from "../ui/icons";
-import InputButton from "../input-button";
 
 export default function Template({
     children,

@@ -62,11 +62,10 @@ export default function Home() {
                     
         <div className="container z-40 space-y-16 mt-40 lg:space-y-0 lg:mt-20">
           <div className="space-y-2 flex flex-col items-center justify-between">
-            <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">like steroids</h1>
-            <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">for business</h1>
+            <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">L'Immobilier de Confiance</h1>
+            <h1 className="font-light font-bold text-5xl tracking-tighter lg:text-9xl uppercase">au Cameroun</h1>
             <span className="block font-light text-lg lg:text-2xl max-w-4xl">
-                Growing a business is hard. We make it whole lot easier, more predictable,
-                less stressful, and more fun
+              Découvrez les Offres Exclusives, Abonnez-vous pour une Consultation Gratuite
             </span>
             <InputButton />
           </div>
