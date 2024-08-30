@@ -75,9 +75,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     <div className="py-5 flex flex-col w-full h-full bg-gray-200 max-w-sm items-center px-10">
                         {data.blogs.map((item: Blogs, index: number) => (
                             <div className="flex items-center shadow-none md:max-w-xl" key={index}>
-                                <img className="object-cover h-14 w-14" src={item.cover} alt={item.title} />
+                                <Image width={10} height={70} src={item.cover} alt={item.title} />
                                 <div className="flex flex-col justify-between p-4 leading-normal">
-                                    <a href={`blog/${params.slug}`} className="block flex font-bold mb-2 space-x-1 group">
+                                    <a href={`blog/${params.slug}`} className="block flex font-bold mb-2 group">
                                         <Icon name="avatar" className="text-primary" />
                                         <span className="text-sm text-gray-500 group-hover:text-primary">{item.user}</span>
                                     </a>
