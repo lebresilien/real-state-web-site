@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import Image from "next/image";
 import { Blogs } from "../../../../types";
-import marked from 'marked';
 import htmlParser from 'html-react-parser';
 
 export default async function Page({ params }: { params: { slug: string } }) {

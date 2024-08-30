@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import ListItem from "./list-item";
 import { Advantage, Vision } from "../../types";
 import { motion } from "framer-motion";
