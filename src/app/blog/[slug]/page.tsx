@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div className="w-full py-6 space-y-6 flex flex-col md:py-10 md:w-1/4">
                     
                     <div className="py-5 bg-primary flex w-full max-w-sm items-center space-x-1 px-5">
-                        <Input className="border-none text-white border-transparent shadow-none focus-visible:ring-transparent" placeholder="Rechercher" />
+                        <Input className="border-none text-white border-transparent shadow-none focus-visible:ring-transparent placeholder:text-white" placeholder="Rechercher" />
                         <Icon name="magnifying-glass" className="text-white" />
                     </div>
 

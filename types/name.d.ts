@@ -18,4 +18,5 @@ export type IconName =
   | "phone-filled"
   | "phone-outline"
   | "twitter-logo"
-  | "watsapp";
+  | "watsapp"
+  | "zoom-out";
