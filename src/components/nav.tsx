@@ -13,8 +13,8 @@ const links = [
     href: '#'
   },
   {
-    title: 'Propriétés',
-    href: '#',
+    title: 'A propos',
+    href: '/about',
   },
   {
     title: 'Consultations',
