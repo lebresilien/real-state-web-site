@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Immobilier",
+  title: "ETS MANAGEMENT IMMOOBILIER",
   description: "Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun.",
 };
 

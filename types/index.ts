@@ -23,6 +23,11 @@ export interface Vision {
     description: string
 }
 
+export interface Mission {
+    name: string
+    description: string
+}
+
 export interface Contact {
     name: string
     subject: string
