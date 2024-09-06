@@ -28,6 +28,17 @@ export interface Mission {
     description: string
 }
 
+export interface Value {
+    name: string
+    description: string
+}
+
+export interface Story {
+    period: string
+    title: string
+    description: string
+}
+
 export interface Contact {
     name: string
     subject: string

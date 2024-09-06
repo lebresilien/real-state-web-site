@@ -4,7 +4,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbS
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from 'react';
-import { Mission } from "../../../types";
+import { Advantage, Mission, Testimony, Value } from "../../../types";
 import {
     Accordion,
     AccordionContent,
@@ -14,7 +14,10 @@ import {
   
 export default function Page() {
 
+    const [testimonies, setTestimonies] = useState<Testimony[]>([]);
     const [data, setData] = useState<Mission[] | null>(null);
+    const [values, setValues] = useState<Value[] | null>(null);
+    const [adavantages, setAdvantages] = useState<Advantage[] | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -25,10 +28,12 @@ export default function Page() {
               throw new Error('Network response was not ok');
             }
             const res = await response.json();
-            //console.log('rrere', res)
             setData(res.missions);
+            setValues(res.values);
+            setAdvantages(res.advantages);
+            setTestimonies(res.testimonies);
           } catch (error) {
-            console.log('errror', error);
+            throw new Error('Error from server');
           } finally {
             setLoading(false);
           }
@@ -51,7 +56,7 @@ export default function Page() {
     return (
         <div className="flex w-full h-full flex-col items-center justify-center lg:min-h-screen">
             <section className="w-full text-white flex flex-col items-center justify-center background-content h-[500px]">
-                <h1 className="text-3xl text-primary sm:text-5xl leading-normal uppercase font-extrabold tracking-tight text-white">Blog</h1>
+                <h1 className="text-3xl text-primary sm:text-5xl leading-normal uppercase font-extrabold tracking-tight text-white">a propos</h1>
                 <Breadcrumb className="mt-3 font-semibold">
                     <BreadcrumbList>
                         <BreadcrumbItem>
@@ -63,7 +68,7 @@ export default function Page() {
                 </Breadcrumb>
             </section>
 
-            <div className="container h-full my-24 flex flex-col space-y-5">
+            <div className="container h-full my-24 flex flex-col space-y-20">
 
                 <div className="flex flex-col px-10 items-center justify-center space-y-10 bg-gray-50 py-10 md:flex-row md:justify-between md:space-y-0">
                     <div className="flex flex-col space-y-3">
@@ -93,7 +98,57 @@ export default function Page() {
 
                 </div>
 
-                <TabComponent />
+                <div className="flex flex-col px-10 items-center justify-center space-y-10 bg-gray-50 py-10 md:flex-row md:justify-between md:space-y-0">
+                    <div className="flex flex-col space-y-3">
+                        <h3 className="text-black text-xl font-bold tracking-wide uppercase md:text-2xl ">
+                            nos valeurs
+                        </h3>
+                        <p className="text-gray-700 w-[500px]">
+                            Nos valeurs fondamentales guident chaque aspect de notre travail. Elles définissent qui nous 
+                            sommes et comment nous opérons. 
+                        </p> 
+                    </div>
+
+                    <div className="flex flex-col space-y-5 max-w-sm">
+                        <Accordion type="single" collapsible>
+                            {values?.map((el) => (
+                                <AccordionItem value={el.name} key={el.name}>
+                                    <AccordionTrigger className="font-bold">{el.name}</AccordionTrigger>
+                                    <AccordionContent>
+                                        {el.description}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </div>
+                </div>
+
+                <div className="flex flex-col px-10 items-center justify-center space-y-10 bg-gray-50 py-10 md:flex-row md:justify-between md:space-y-0">
+                    <div className="flex flex-col space-y-3">
+                        <h3 className="text-black text-xl font-bold tracking-wide uppercase md:text-2xl ">
+                            ce qui nous differencie
+                        </h3>
+                        <p className="text-gray-700 w-[500px]">
+                            Nos valeurs fondamentales guident chaque aspect de notre travail. Elles définissent qui nous 
+                            sommes et comment nous opérons. 
+                        </p> 
+                    </div>
+
+                    <div className="flex flex-col space-y-5 max-w-sm">
+                        <Accordion type="single" collapsible>
+                            {adavantages?.map((el) => (
+                                <AccordionItem value={el.name} key={el.name}>
+                                    <AccordionTrigger className="font-bold">{el.name}</AccordionTrigger>
+                                    <AccordionContent>
+                                        {el.description}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </div>
+                </div>
+
+                <TabComponent testimonies={testimonies} />
              
             </div>
 
