@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AnimatePresence, motion } from "framer-motion";
-import { Testimony } from "../../types";
+import { Story, Testimony } from "../../types";
 import Slide from "./caroussel";
-import Story from "./story";
+import History from "./story";
 
 const variants = {
     visible: {x: 0, opacity: 1, y: -10, transition:  { staggerChildern: 0.5 }},
     hidden: {x: 0, opacity: 0, y: 10}
 }
 
-const TabComponent = ({ testimonies }: { testimonies: Testimony[] }) => {
+const TabComponent = ({ testimonies, stories }: { testimonies: Testimony[], stories: Story[]}) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   const onTabClick = (index: number) => {
@@ -21,7 +21,7 @@ const TabComponent = ({ testimonies }: { testimonies: Testimony[] }) => {
     {
         name: "Histoire",
         value: "story",
-        content: <Story />
+        content: <History stories={stories} />
     },
     {
         name: "Equipe",
@@ -37,8 +37,8 @@ const TabComponent = ({ testimonies }: { testimonies: Testimony[] }) => {
 
 	return ( 
         <div className="flex flex-col items-center bg-white">
-            <Tabs defaultValue="story" className="w-full space-y-10">
-                <TabsList className="space-x-5 px-10 py-8">
+            <Tabs defaultValue="story" className="w-full flex flex-col space-y-10 items-center">
+                <TabsList className="space-x-10 py-8 px-10">
                     {trigger.map((el, index) => (
                         <TabsTrigger onClick={() => onTabClick(index)} value={el.value} key={el.value}>{el.name}</TabsTrigger>
                     ))}

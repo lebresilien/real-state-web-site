@@ -4,7 +4,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbS
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from 'react';
-import { Advantage, Mission, Testimony, Value } from "../../../types";
+import { Advantage, Mission, Story, Testimony, Value } from "../../../types";
 import {
     Accordion,
     AccordionContent,
@@ -15,6 +15,7 @@ import {
 export default function Page() {
 
     const [testimonies, setTestimonies] = useState<Testimony[]>([]);
+    const [stories, setStories] = useState<Story[]>([]);
     const [data, setData] = useState<Mission[] | null>(null);
     const [values, setValues] = useState<Value[] | null>(null);
     const [adavantages, setAdvantages] = useState<Advantage[] | null>(null);
@@ -32,6 +33,7 @@ export default function Page() {
             setValues(res.values);
             setAdvantages(res.advantages);
             setTestimonies(res.testimonies);
+            setStories(res.stories);
           } catch (error) {
             throw new Error('Error from server');
           } finally {
@@ -55,7 +57,7 @@ export default function Page() {
 
     return (
         <div className="flex w-full h-full flex-col items-center justify-center lg:min-h-screen">
-            <section className="w-full text-white flex flex-col items-center justify-center background-content h-[500px]">
+            <section className="w-full text-white flex flex-col items-center justify-center background-content h-[400px] lg:h-[500px]">
                 <h1 className="text-3xl text-primary sm:text-5xl leading-normal uppercase font-extrabold tracking-tight text-white">a propos</h1>
                 <Breadcrumb className="mt-3 font-semibold">
                     <BreadcrumbList>
@@ -70,12 +72,12 @@ export default function Page() {
 
             <div className="container h-full my-24 flex flex-col space-y-20">
 
-                <div className="flex flex-col px-10 items-center justify-center space-y-10 bg-gray-50 py-10 md:flex-row md:justify-between md:space-y-0">
+                <div data-aos="flip-up" className="flex flex-col px-10 items-center justify-center space-y-10 bg-gray-50 py-10 lg:flex-row lg:justify-between lg:space-y-0">
                     <div className="flex flex-col space-y-3">
-                        <h3 className="text-black text-xl font-bold tracking-wide uppercase md:text-2xl ">
+                        <h3 className="text-black text-center text-xl font-bold tracking-wide uppercase lg:text-2xl lg:text-start">
                             notre mission
                         </h3>
-                        <p className="text-gray-700 w-[500px]">
+                        <p className="text-gray-700 lg:w-[500px]">
                             Chez <span className="text-primary font-bold underline text-justify decoration-primary">ETS Management Immobilier (EMI)</span>, notre mission est de transformer le marché 
                             immobilier au Cameroun en offrant des services basés sur la confiance, la transparence et 
                             l&apos;intégrité.Nous croyons que chaque transaction immobilière doit être une expérience positive, 
@@ -98,12 +100,12 @@ export default function Page() {
 
                 </div>
 
-                <div className="flex flex-col px-10 items-center justify-center space-y-10 bg-gray-50 py-10 md:flex-row md:justify-between md:space-y-0">
+                <div data-aos="flip-down" className="flex flex-col px-10 items-center justify-center space-y-10 bg-gray-50 py-10 lg:flex-row lg:justify-between lg:space-y-0">
                     <div className="flex flex-col space-y-3">
-                        <h3 className="text-black text-xl font-bold tracking-wide uppercase md:text-2xl ">
+                        <h3 className="text-black text-center text-xl font-bold tracking-wide uppercase lg:text-2xl lg:text-start">
                             nos valeurs
                         </h3>
-                        <p className="text-gray-700 w-[500px]">
+                        <p className="text-gray-700 lg:w-[500px]">
                             Nos valeurs fondamentales guident chaque aspect de notre travail. Elles définissent qui nous 
                             sommes et comment nous opérons. 
                         </p> 
@@ -123,12 +125,12 @@ export default function Page() {
                     </div>
                 </div>
 
-                <div className="flex flex-col px-10 items-center justify-center space-y-10 bg-gray-50 py-10 md:flex-row md:justify-between md:space-y-0">
+                <div data-aos="flip-up" className="flex flex-col px-10 items-center justify-center space-y-10 bg-gray-50 py-10 lg:flex-row lg:justify-between lg:space-y-0">
                     <div className="flex flex-col space-y-3">
-                        <h3 className="text-black text-xl font-bold tracking-wide uppercase md:text-2xl ">
+                        <h3 className="text-black text-center text-xl font-bold tracking-wide uppercase lg:text-2xl lg:text-start">
                             ce qui nous differencie
                         </h3>
-                        <p className="text-gray-700 w-[500px]">
+                        <p className="text-gray-700 lg:w-[500px]">
                             Nos valeurs fondamentales guident chaque aspect de notre travail. Elles définissent qui nous 
                             sommes et comment nous opérons. 
                         </p> 
@@ -148,7 +150,7 @@ export default function Page() {
                     </div>
                 </div>
 
-                <TabComponent testimonies={testimonies} />
+                <TabComponent testimonies={testimonies} stories={stories} />
              
             </div>
 

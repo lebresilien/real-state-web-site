@@ -10,7 +10,7 @@ import Image from "next/image";
 
 const Slide = ({ testimonies }: { testimonies: Testimony[] }) => {
     return (
-        <section className="w-full my-16 lg:my-24">
+        <section className="w-full">
 
             <div className="mx-auto flex flex-col justify-center space-y-16 px-4 sm:px-6 lg:px-8 lg:space-y-24">
             
