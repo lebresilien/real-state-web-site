@@ -9,8 +9,16 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ETS MANAGEMENT IMMOOBILIER",
+  title: "ETS MANAGEMENT IMMOBILIER",
   description: "Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun.",
+  icons: {
+    icon: [
+      {
+        url: '/images/favicon-32x32',
+        href: '/images/favicon-32x32'
+      }
+    ]
+  }
 };
 
 export default function RootLayout({

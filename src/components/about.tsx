@@ -11,7 +11,7 @@ const About = ({ advantages, visions }: {advantages: Advantage[], visions: Visio
             <div className="container py-10 px-3 mx-0 lg:py-16 lg:px-8 lg:mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
                     <div className="mt-12 md:mt-0 order-last md:order-first" data-aos="fade-up-right">
-                        <Image  
+                        <Image
                             src="https://images.unsplash.com/photo-1531973576160-7125cd663d86"
                             alt="A propos de Ets Management Immo" 
                             className="object-cover rounded-lg shadow-md"
