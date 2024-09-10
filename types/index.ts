@@ -28,6 +28,11 @@ export interface Mission {
     description: string
 }
 
+export interface Faq {
+    question: string
+    answer: string
+}
+
 export interface Value {
     name: string
     description: string

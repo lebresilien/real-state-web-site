@@ -4,6 +4,7 @@ import { Advantage, Vision } from "../../types";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Icon } from "./ui/icons";
+import Link from "next/link";
 
 const About = ({ advantages, visions }: {advantages: Advantage[], visions: Vision[]}) => {
     return (
@@ -35,13 +36,13 @@ const About = ({ advantages, visions }: {advantages: Advantage[], visions: Visio
                             Immobilier. Leur mission: créer un environnement de confiance et de transparence, 
                             garantissant des transactions immobilières honnêtes et traçables au Cameroun.  
                         </p>
-                        <div className="mt-8">
+                        <Link className="mt-8" href="/contact">
                             <Button className="inline-flex relative gap-x-2 h-10 border-0 bg-blue-500 overflow-hidden transition-all hover:bg-blue-500 group focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm lg:h-16">
                                 <span className="w-0 h-0 rounded bg-blue-600 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
                                 <span className="text-white sm:text-sm transition-colors duration-300 ease-in-out group-hover:text-white z-10">Contactez nous</span>
                                 <Icon name="arrow-right" className="animate-ping h-3 w-3 text-white" />
                             </Button>
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </div>

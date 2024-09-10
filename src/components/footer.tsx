@@ -91,7 +91,7 @@ const Footer = () => {
 									</Link>
 								</li>
 								<li className="mb-2">
-									<Link href="#">
+									<Link href="/faq">
 										faq
 									</Link>
 								</li>
