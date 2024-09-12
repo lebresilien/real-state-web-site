@@ -113,7 +113,7 @@ export default function Contact() {
                             </span>
                             <div className="flex flex-col space-y-1">
                                 <span className="text-gray-500 text-lg">Appellez nous 24/7</span>
-                                <span className="text-gray-900 font-bold text-lg">+237 678660800</span>
+                                <span className="text-gray-900 font-bold text-lg">+237 691313486</span>
                             </div>
                         </div>
 
@@ -165,7 +165,7 @@ export default function Contact() {
                                             name="subject"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel>subject</FormLabel>
+                                                    <FormLabel>Sujet</FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             {...field}
