@@ -175,11 +175,11 @@ export default  function Page() {
             </div>
 
             <div className="flex w-full flex-col items-center bg-white justify-center py-24 space-y-10">
-                <span className="text-xl text-black font-bold uppercase lg:text-3xl">Prêt à Commencer ?</span>
+                <span className="text-xl text-black font-bold uppercase lg:text-3xl">Prêt à vous lancez ?</span>
                 <Link className="mt-8" href="/contact">
                     <Button className="inline-flex relative gap-x-2 h-16 px-4 border-0 bg-blue-500 overflow-hidden transition-all hover:bg-blue-500 group focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm lg:h-20">
                         <span className="w-0 h-0 rounded bg-blue-600 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
-                        <span className="text-white sm:text-sm transition-colors duration-300 ease-in-out group-hover:text-white z-10">Lancez nous</span>
+                        <span className="text-white sm:text-sm transition-colors duration-300 ease-in-out group-hover:text-white z-10">Demandez une consultation</span>
                         <Icon name="arrow-right" className="animate-ping h-3 w-3 text-white" />
                     </Button>
                 </Link>

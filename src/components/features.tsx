@@ -1,6 +1,17 @@
 import Link from "next/link";
 import { Service } from "../../types";
+import { Button } from "./ui/button";
+import { Icon } from "./ui/icons";
+import { motion } from "framer-motion";
 
+const readButtonVariants = {
+    hover: {
+      opacity: 1,
+    },
+    initial: {
+      opacity: 0,
+    },
+};
 const Feature = ({ services }: { services: Service[] }) => {
     return (
         <section className="w-full mx-auto px-4 space-y-6 bg-slate-50 py-8 my-12 lg:my-24 md:py-12 lg:py-20">
@@ -20,7 +31,9 @@ const Feature = ({ services }: { services: Service[] }) => {
 
                 <div className="mx-auto grid gap-4 mt-5 lg:mt-10 grid-cols-1 md:max-w-[64rem] md:grid-cols-2">
                     {services.map((service, index) => (
-                            <Link
+                            <motion.a
+                                initial="initial" 
+                                whileHover="hover"
                                 href={`service/${service.id}`}
                                 key={index}
                                 className="relative block overflow-hidden rounded-lg border bg-white select-none hover:shadow hover:shadow-blue-500 p-2"
@@ -34,9 +47,22 @@ const Feature = ({ services }: { services: Service[] }) => {
                                     <div className="space-y-2">
                                         <h3 className="font-bold">{service.name}</h3>
                                         <p className="text-sm text-muted-foreground">{service.description}</p>
+                                        <motion.div 
+                                            className="flex justify-end"
+                                            variants={readButtonVariants}
+                                            transition={{
+                                                duration: .5
+                                            }}
+                                        >
+                                            <Button className="inline-flex relative gap-x-2 h-4 border-0 bg-black overflow-hidden transition-all hover:bg-gray-500 group focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm lg:h-6">
+                                                <span className="w-0 h-0 rounded bg-gray-700 absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
+                                                <span className="text-white sm:text-sm transition-colors duration-300 ease-in-out group-hover:text-white z-10">Savoir plus</span>
+                                                <Icon name="arrow-right" className="animate-ping h-3 w-3 text-white" />
+                                            </Button>
+                                        </motion.div>
                                     </div>
                                 </div>
-                            </Link>
+                            </motion.a>
                         ))
                     }
 
