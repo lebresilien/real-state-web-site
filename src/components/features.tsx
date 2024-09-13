@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Service } from "../../types";
 
 const Feature = ({ services }: { services: Service[] }) => {
@@ -19,9 +20,10 @@ const Feature = ({ services }: { services: Service[] }) => {
 
                 <div className="mx-auto grid gap-4 mt-5 lg:mt-10 grid-cols-1 md:max-w-[64rem] md:grid-cols-2">
                     {services.map((service, index) => (
-                            <div
+                            <Link
+                                href={`service/${service.id}`}
                                 key={index}
-                                className="relative overflow-hidden rounded-lg border bg-white select-none hover:shadow hover:shadow-blue-500 p-2"
+                                className="relative block overflow-hidden rounded-lg border bg-white select-none hover:shadow hover:shadow-blue-500 p-2"
                             >
                                 <div className="flex flex-col justify-between items-center rounded-md p-6">
                                     <svg viewBox="0 0 24 24" className="h-12 w-12 fill-current">
@@ -34,7 +36,7 @@ const Feature = ({ services }: { services: Service[] }) => {
                                         <p className="text-sm text-muted-foreground">{service.description}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))
                     }
 
