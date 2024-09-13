@@ -8,7 +8,7 @@ import htmlParser from 'html-react-parser';
 
 export default async function Page({ params }: { params: { slug: string } }) {
 
-    let res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blog/${params.slug}`, { next: { revalidate: 10 } });
+    let res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blog/${params.slug}`, { next: { revalidate: 3600 } });
     let data = await res.json();
 
     return (

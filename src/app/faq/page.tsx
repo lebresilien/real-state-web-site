@@ -30,17 +30,19 @@ export default async function Page() {
                 </Breadcrumb>
             </section>
 
-            <div className="container grid grid-cols-1 gap-4 my-24 lg:grid-cols-2 lg:gap-6">
-                {data.map((el: Faq, index: number) => (
-                    <Accordion type="single" collapsible key={index} className="bg-white px-1 lg:px-3">
-                        <AccordionItem value={el.question}>
-                            <AccordionTrigger className="font-bold ">{el.question}</AccordionTrigger>
-                            <AccordionContent>
-                                {el.answer}
-                            </AccordionContent>
-                        </AccordionItem>
-                    </Accordion>
-                ))}
+            <div className="container">
+                <Accordion type="single" collapsible>
+                    {data.map((el: Faq, index: number) => (
+                        <div key={index} className="my-10">
+                            <AccordionItem value={el.question} className="bg-white px-1 lg:px-3 font-bold">
+                                <AccordionTrigger>{el.question}</AccordionTrigger>
+                                <AccordionContent>
+                                    {el.answer}
+                                </AccordionContent>
+                            </AccordionItem>
+                        </div>
+                    ))}
+                </Accordion>
             </div>
 
             <div className="flex w-full flex-col items-center bg-white justify-center py-24 space-y-10">

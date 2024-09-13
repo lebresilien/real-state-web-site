@@ -61,3 +61,24 @@ export interface Blogs {
     user: string,
     createdAt: string
 }
+
+export interface Data {
+    name: string
+    description: string
+    presentation: string
+    contexte: string
+    apport: string
+    illustration: string,
+    costs: [{
+        name: string
+        description: string
+    }],
+    advantages: [{
+        name: string
+        description: string
+    }],
+    profits: [{
+        name: string
+        description: string
+    }]
+}
