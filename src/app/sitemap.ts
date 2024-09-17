@@ -15,6 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 0.9,
 		},
         {
+			url: 'https://etsmanagementimmo.com/service',
+			lastModified: new Date(),
+            changeFrequency: 'yearly',
+			priority: 0.9,
+		},
+        {
 			url: 'https://etsmanagementimmo.com/blog',
 			lastModified: new Date(),
             changeFrequency: 'monthly',
