@@ -10,14 +10,31 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "ETS MANAGEMENT IMMOBILIER",
-  description: "Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun.",
+  description: "Votre partenaire de Confiance pour toutes vos Transactions Immobilières au Cameroun",
+  openGraph: {
+    images: '/next.svg',
+  },
   icons: {
     icon: [
       {
-        url: '/images/favicon-32x32',
-        href: '/images/favicon-32x32'
-      }
-    ]
+        rel: 'icon',
+        type: 'image/png',
+        url: '/images/favicon-32x32.png',
+        sizes: '32x32'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        url: '/images/favicon-16x16.png',
+        sizes: '16x16',
+      },
+    ],
+    apple: {
+      type: 'image/png',
+      rel: 'apple-touch-icon',
+      url: '/images/apple-touch-icon.png',
+      sizes: '180x180',
+    },
   }
 };
 
