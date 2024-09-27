@@ -49,11 +49,8 @@ export default  function Page() {
 
     if(loading) 
         return (
-            <div className="flex items-center justify-center h-screen">
-                <span className="relative flex h-24 w-24">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-20 w-20 bg-blue-600"></span>
-                </span>
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="pulser"></div>
             </div>
         )
 
