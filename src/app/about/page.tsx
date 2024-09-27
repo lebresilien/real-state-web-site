@@ -1,8 +1,6 @@
 "use client";
 import TabComponent from "@/components/tab";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from 'react';
 import { Advantage, Mission, Story, Testimony, Value } from "../../../types";
 import {
