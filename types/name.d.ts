@@ -8,6 +8,7 @@ export type IconName =
   | "avatar"
   | "border-all"
   | "border-style"
+  | "check-circled"
   | "current-location-outline"
   | "figma-logo"
   | "file-phone-outline"
