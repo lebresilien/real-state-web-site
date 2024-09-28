@@ -8,10 +8,10 @@ import useMenuAnimation from "@/hooks/use-animate";
 import { NavigationContext } from "@/context/navigationContext";
 
 const links = [
- /*  {
-    title: 'Services',
-    href: '#'
-  }, */
+ {
+    title: 'Accueil',
+    href: '/'
+  }, 
   {
     title: 'A propos',
     href: '/about',
