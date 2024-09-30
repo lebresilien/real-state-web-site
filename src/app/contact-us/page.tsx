@@ -74,7 +74,11 @@ export default function Contact() {
                 description: "Les informations ont été bien transmises"
             })
         } catch (error) {
-            console.log('error', error);
+             toast({
+                variant: "destructive",
+                title: "Erreur.",
+                description: "Une erreur innattendue est survenue"
+            })
         } finally {
             setIsSubmitting(false);
         }

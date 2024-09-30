@@ -33,6 +33,9 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { useToast  } from "@/components/ui/use-toast";
+import { useRouter } from 'next/navigation';
 
 const lists = [
     'Accès à des propriétés exclusives non listées publiquement',
@@ -93,6 +96,10 @@ const FormSchema = z.object({
 });
 export default function Consulting() {
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const { toast } = useToast();
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -110,7 +117,42 @@ export default function Consulting() {
     });
 
     const onSubmit = async (contact: z.infer<typeof FormSchema>) => {
-        console.log(contact)
+        setIsSubmitting(true);
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/contact`, {
+                method: 'POST',
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: contact.name,
+                    phone: contact.phone,
+                    email: contact.email,
+                    service: contact.service,
+                    property: contact.property,
+                    amount: contact.amount,
+                    mode: contact.mode,
+                    date: contact.date_hour,
+                    hour: contact.time,
+                    message: contact.comment,
+                    subject: 'Consultation'
+                })
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            //form.reset();
+            router.push('/confirm');
+        } catch (error) {
+            toast({
+                variant: "destructive",
+                title: "Erreur.",
+                description: "Une erreur innattendue est survenue"
+            })
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     return (
@@ -410,7 +452,7 @@ export default function Consulting() {
                                         >
                                             <span className="w-0 h-0 rounded bg-secondary absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
                                             <span className="text-white sm:text-sm transition-colors duration-300 ease-in-out group-hover:text-white z-10">
-                                                Planifier ma consultation
+                                                { isSubmitting ? "Planification en cours ..." : "Planifier ma consultation" }
                                             </span>
                                         </Button>
                                     </div>
