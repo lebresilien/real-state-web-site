@@ -13,14 +13,32 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { date, z } from "zod";
+import { CalendarIcon } from "@radix-ui/react-icons";
+import { format } from "date-fns";
+import { Calendar } from "@/components/ui/calendar"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
+import { cn } from "@/lib/utils";
 
 const lists = [
     'Accès à des propriétés exclusives non listées publiquement',
     'Consultation gratuite avec nos conseillers en immobilier',
-    'Accès à des offres promotionnelles personnalisées et des conseils experts'
+    'Accès à des offres promotionnelles personnalisées et des conseils experts',
+    'Vos informations sont 100% sécurisées et ne seront jamais partagées avec des tiers'
 ];
 
 const properties = [
@@ -35,7 +53,7 @@ const services = [
     'Vente',
     'Location',
     'Terrain',
-    'estion Immobilière',
+    'Gestion Immobilière',
     'Conseil'
 ];
 
@@ -50,22 +68,23 @@ const FormSchema = z.object({
       message: "Le Nom doit contenir au moins 3 caractères.",
     }),
     phone: z.string().min(1, {
-        message: "Le champ subject est obligatoire",
+        message: "Le champ telephone est obligatoire",
     }),
     service: z.string().min(1, {
-        message: "Le champ subject est obligatoire",
+        message: "Le champ service est obligatoire",
     }),
-    amount: z.string().min(9, {
-        message: "Le champ subject est obligatoire",
+    amount: z.string().min(5, {
+        message: "Le champ budget doit contenir au moins 5 chiffres",
     }),
     property: z.string().min(1, {
-        message: "Le champ subject est obligatoire",
+        message: "Le champ type de propriété est obligatoire",
     }),
     mode: z.string().min(1, {
-        message: "Le champ mode est obligatoire",
+        message: "Le champ mode de consultation est obligatoire",
     }),
-    date_hour: z.string().min(1, {
-        message: "Le champ mode est obligatoire",
+    date_hour: z.date(),
+    time: z.string().min(1, {
+        message: "Le champ heure est obligatoire",
     }),
     email: z.string().email(),
     comment: z.string().min(10, {
@@ -85,11 +104,14 @@ export default function Consulting() {
           amount: "",
           mode: "",
           comment: "",
-          date_hour: ""
+          date_hour: new Date(),
+          time: ""
         }
     });
 
-    const onSubmit = async (contact: z.infer<typeof FormSchema>) => {}
+    const onSubmit = async (contact: z.infer<typeof FormSchema>) => {
+        console.log(contact)
+    }
 
     return (
         <div className="flex relative w-full h-full flex-col items-center lg:min-h-screen mt-60">
@@ -136,7 +158,9 @@ export default function Consulting() {
                         <div className="flex flex-col space-y-5 my-5">
                             {lists.map((value, index) => (
                                <div className="flex space-x-3" key={index}>
-                                    <Icon name="check-circled" className="h-10 w-10 text-primary"/>
+                                    <span className="inline-flex items-center">
+                                        <Icon name="check-circled" className="h-7 w-7 text-primary"/>
+                                    </span>
                                     <span className="text-gray-900 font-bold text-lg">{value}</span>
                                </div> 
                             ))}
@@ -211,13 +235,18 @@ export default function Consulting() {
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel>Service</FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            {...field}
-                                                            className="appearance-none block w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
-                                                            placeholder="xxxxxxxx"
-                                                        />
-                                                    </FormControl>
+                                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                            <FormControl className="appearance-none w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary">
+                                                                <SelectTrigger>
+                                                                    <SelectValue placeholder="Selectionnez le service" />
+                                                                </SelectTrigger>
+                                                            </FormControl>
+                                                            <SelectContent>
+                                                                {services.map((el, index) => (
+                                                                    <SelectItem key={index} value={el}>{el}</SelectItem>
+                                                                ))}
+                                                            </SelectContent>
+                                                        </Select>
                                                     <FormMessage />
                                                 </FormItem>
                                             )}
@@ -229,14 +258,19 @@ export default function Consulting() {
                                             name="property"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel>Propriété</FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                        {...field}
-                                                            className="appearance-none block w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
-                                                            placeholder="xxxxxxxx"
-                                                        />
-                                                    </FormControl>
+                                                    <FormLabel>Type de Propriété</FormLabel>
+                                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                        <FormControl className="appearance-none w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary">
+                                                            <SelectTrigger>
+                                                                <SelectValue placeholder="Selectionnez le type de propriété" />
+                                                            </SelectTrigger>
+                                                        </FormControl>
+                                                        <SelectContent>
+                                                            {properties.map((el, index) => (
+                                                                <SelectItem key={index} value={el}>{el}</SelectItem>
+                                                            ))}
+                                                        </SelectContent>
+                                                    </Select>
                                                     <FormMessage />
                                                 </FormItem>
                                             )}
@@ -251,7 +285,8 @@ export default function Consulting() {
                                                     <FormLabel>Budget estimé</FormLabel>
                                                     <FormControl>
                                                         <Input
-                                                        {...field}
+                                                            type="number"
+                                                            {...field}
                                                             className="appearance-none block w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
                                                             placeholder="100000000"
                                                         />
@@ -268,27 +303,77 @@ export default function Consulting() {
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel>Mode de consultation</FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            {...field}
-                                                            className="appearance-none block w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
-                                                            placeholder="xxxxxxxx"
-                                                        />
-                                                    </FormControl>
+                                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                        <FormControl className="appearance-none w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary">
+                                                            <SelectTrigger>
+                                                                <SelectValue placeholder="Selectionnez le mode de consultation" />
+                                                            </SelectTrigger>
+                                                        </FormControl>
+                                                        <SelectContent>
+                                                            {modes.map((el, index) => (
+                                                                <SelectItem key={index} value={el}>{el}</SelectItem>
+                                                            ))}
+                                                        </SelectContent>
+                                                    </Select>
                                                     <FormMessage />
                                                 </FormItem>
                                             )}
                                         />
                                     </div>
-                                    <div className="w-full mb-6">
+                                    <div className="w-full md:w-1/2 mb-6">
                                         <FormField
                                             control={form.control}
                                             name="date_hour"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel>Date et heure</FormLabel>
+                                                    <FormLabel>Date</FormLabel>
+                                                    <Popover>
+                                                        <PopoverTrigger asChild>
+                                                            <FormControl>
+                                                                <Button
+                                                                    variant={"outline"}
+                                                                    className={cn(
+                                                                        "block text-left flex items-center appearance-none w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 leading-tight focus:outline-none focus:border-primary",
+                                                                        !field.value && "text-muted-foreground"
+                                                                    )}
+                                                                    >
+                                                                    {field.value ? (
+                                                                        format(field.value, "dd-MM-yyyy")
+                                                                    ) : (
+                                                                        <span>Pick a date</span>
+                                                                    )}
+                                                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                                </Button>
+                                                            </FormControl>
+                                                        </PopoverTrigger>
+                                                        <PopoverContent className="w-auto p-0" align="start">
+                                                            <Calendar
+                                                                mode="single"
+                                                                // @ts-ignore
+                                                                selected={field.value}
+                                                                onSelect={field.onChange}
+                                                                disabled={(date) =>
+                                                                date > new Date() || date < new Date("1900-01-01")
+                                                                }
+                                                                initialFocus
+                                                            />
+                                                        </PopoverContent>
+                                                    </Popover>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                    <div className="w-full md:w-1/2 md:px-3 mb-6">
+                                        <FormField
+                                            control={form.control}
+                                            name="time"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel>Heure</FormLabel>
                                                     <FormControl>
                                                         <Input
+                                                            type="time"
                                                             {...field}
                                                             className="appearance-none block w-full h-16 bg-gray-50 text-gray-700 border border-transparent rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary"
                                                             placeholder="18-08-2024"
