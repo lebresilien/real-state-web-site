@@ -194,7 +194,7 @@ export default function Consulting() {
                     
                     <div className="md:col-span-4 p-10">
                         <h3 className="text-3xl text-primary sm:text-4xl leading-normal font-extrabold tracking-tight">
-                            Bullet Points:
+                            Nous vous garantissons:
                         </h3>
 
                         <div className="flex flex-col space-y-5 my-5">
@@ -382,7 +382,7 @@ export default function Consulting() {
                                                                     {field.value ? (
                                                                         format(field.value, "dd-MM-yyyy")
                                                                     ) : (
-                                                                        <span>Pick a date</span>
+                                                                        <span>Choisir une date</span>
                                                                     )}
                                                                     <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                                                                 </Button>
