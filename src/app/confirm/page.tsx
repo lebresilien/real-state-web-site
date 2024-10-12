@@ -85,7 +85,7 @@ export default function Confirm() {
                             Cliquez sur le boutton ci dessous pour télécharger
                         </span>
                     </div>
-                    <Link href={"/folders/page-consultation.pdf"} target="_blank">
+                    <Link href={"/folders/geavpc.pdf"} target="_blank">
                         <span className="inline-flex items-center bg-slate-50 p-4 rounded-full text-primary group-hover:text-white group-hover:bg-primary">
                             <Icon name="download" className="h-7 w-7 animate-bounce" />
                         </span>
