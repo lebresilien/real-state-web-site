@@ -54,7 +54,7 @@ export default function RootLayout({
         </NavigationProvider>
       </body>
 
-      <GoogleAnalytics gaId="G-PCZZBNJSSW" />
+      <GoogleAnalytics gaId="G-07BQ8L7SHK" />
 
     </html>
   );
