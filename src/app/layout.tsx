@@ -48,6 +48,7 @@ export default function RootLayout({
     <html lang="fr">
 
       <body className={`${inter.className}`}>
+        <GoogleTagManager gtmId="GTM-5FRQJFJD" />
         <NavigationProvider>
           <Template children={children} />
           <Toaster />
@@ -55,8 +56,6 @@ export default function RootLayout({
       </body>
 
       <GoogleAnalytics gaId="G-07BQ8L7SHK" />
-      <GoogleTagManager gtmId="GTM-5FRQJFJD" />
-
     </html>
   );
 }
