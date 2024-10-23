@@ -35,7 +35,7 @@ const Footer = () => {
 							</div>
 						</div>
 					</div>
-					<div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6 md:space-x-24">
+					<div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-0">
 						<div>
 							<h2 className="mb-6 text-md font-semibold uppercase text-white">
 								Navigation
@@ -100,6 +100,37 @@ const Footer = () => {
 									<Link href="/contact-us">
 										contact
 									</Link>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h2 className="mb-6 text-md font-semibold uppercase text-white">
+								Contactez nous
+							</h2>
+							<ul className="text-sm text-white">
+								<li className="mb-2">
+									<div className="flex items-center cursor-pointer group space-x-2">
+										<span className="inline-flex items-center bg-slate-50 p-2 rounded-full text-primary group-hover:text-white group-hover:bg-primary">
+											<Icon name="phone-outline" className="h-3 w-3" />
+										</span>
+										<span className="">+237 691313486</span>
+									</div>
+								</li>
+								<li className="mb-2 overflow-hidden">
+									<div className="flex items-center cursor-pointer group space-x-2">
+										<span className="inline-flex items-center bg-slate-50 p-2 rounded-full text-primary group-hover:text-white group-hover:bg-primary">
+											<Icon name="mail-outline" className="h-3 w-3" />
+										</span>
+										<span className="text-balance">infos@etsmanagement.com</span>
+									</div>
+								</li>
+								<li>
+									<div className="flex items-center cursor-pointer group space-x-2">
+										<span className="inline-flex items-center bg-slate-50 p-2 rounded-full text-primary group-hover:text-white group-hover:bg-primary">
+											<Icon name="current-location-outline" className="h-3 w-3" />
+										</span>
+										<span className="">Simbock dépôt de bois à Yaoundé</span>
+									</div>
 								</li>
 							</ul>
 						</div>

@@ -23,8 +23,8 @@ const Feature = ({ services }: { services: Service[] }) => {
                     <h2 className="font-bold text-3xl leading-[1.1] sm:text-3xl md:text-6xl">Nos services</h2>
 
                     <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-                        The product can personalize user experiences by understanding individual preferences and tailoring
-                        recommendations or content based on user behavior and historical data.
+                        Chez ETS Management Immobilier (EMI), nous mettons à votre disposition une gamme complète de services pour répondre à toutes vos 
+                        exigences immobilières au Cameroun.
                     </p>
 
                 </div>

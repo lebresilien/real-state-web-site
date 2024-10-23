@@ -137,7 +137,7 @@ export default function Contact() {
                             </span>
                             <div className="flex flex-col space-y-1">
                                 <span className="text-gray-500 text-lg">Visitez nos locaux</span>
-                                <span className="text-gray-900 font-bold text-lg">Akwa, Doaula, Cameroun</span>
+                                <span className="text-gray-900 font-bold text-lg">Simbock dépôt de bois à Yaoundé</span>
                             </div>
                         </div>
                     </div>
