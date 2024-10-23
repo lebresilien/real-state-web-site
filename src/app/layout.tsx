@@ -5,7 +5,7 @@ import "./globals.css";
 import Template from "@/components/templates/layout";
 import NavigationProvider from "@/context/navigationContext";
 import { Toaster } from "@/components/ui/toaster";
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleTagManager  } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,6 +55,7 @@ export default function RootLayout({
       </body>
 
       <GoogleAnalytics gaId="G-07BQ8L7SHK" />
+      <GoogleTagManager gtmId="GTM-5FRQJFJD" />
 
     </html>
   );
